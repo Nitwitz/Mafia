@@ -1,0 +1,13 @@
+c:\users\екатерина\documents\visual studio 2015\Projects\Mafia\Mafia\bin\Debug\Mafia.exe.config
+c:\users\екатерина\documents\visual studio 2015\Projects\Mafia\Mafia\bin\Debug\Mafia.exe
+c:\users\екатерина\documents\visual studio 2015\Projects\Mafia\Mafia\bin\Debug\Mafia.pdb
+c:\users\екатерина\documents\visual studio 2015\Projects\Mafia\Mafia\obj\Debug\Mafia.csprojResolveAssemblyReference.cache
+c:\users\екатерина\documents\visual studio 2015\Projects\Mafia\Mafia\obj\Debug\Mafia.FormMenu.resources
+c:\users\екатерина\documents\visual studio 2015\Projects\Mafia\Mafia\obj\Debug\Mafia.Properties.Resources.resources
+c:\users\екатерина\documents\visual studio 2015\Projects\Mafia\Mafia\obj\Debug\Mafia.csproj.GenerateResource.Cache
+c:\users\екатерина\documents\visual studio 2015\Projects\Mafia\Mafia\obj\Debug\Mafia.exe
+c:\users\екатерина\documents\visual studio 2015\Projects\Mafia\Mafia\obj\Debug\Mafia.pdb
+C:\Users\Екатерина\Documents\visual studio 2015\Projects\Mafia\Mafia\obj\Debug\Mafia.Play.resources
+F:\Mafia\Mafia\bin\Debug\Mafia.exe.config
+F:\Mafia\Mafia\obj\Debug\Mafia.exe
+F:\Mafia\Mafia\obj\Debug\Mafia.pdb
