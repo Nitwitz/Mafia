@@ -24,7 +24,18 @@ namespace ConsoleClient
             /// Имя игрока.
             /// </summary>
             string userName = Console.ReadLine();
-            
+            /// <summary>
+            /// Роль игрока.
+            /// </summary>
+            string role;
+            /// <summary>
+            /// Сообщение, получаемое игроком от сервера.
+            /// </summary>
+            string message1;
+            /// <summary>
+            /// Имя игрока, выбираемого голосованием.
+            /// </summary>
+            string otherUserName;
             TcpClient client = null;
             try
             {
