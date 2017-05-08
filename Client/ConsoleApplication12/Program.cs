@@ -27,7 +27,7 @@ namespace ConsoleClient
             /// <summary>
             /// Роль игрока.
             /// </summary>
-            string role;
+            Role role;
             /// <summary>
             /// Сообщение, получаемое игроком от сервера.
             /// </summary>
