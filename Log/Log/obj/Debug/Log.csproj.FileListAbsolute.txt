@@ -1,0 +1,9 @@
+C:\Users\dk12\Documents\Visual Studio 2012\Projects\Log\Log\obj\Debug\Log.csprojResolveAssemblyReference.cache
+C:\Users\dk12\Documents\Visual Studio 2012\Projects\Log\Log\bin\Debug\Log.dll
+C:\Users\dk12\Documents\Visual Studio 2012\Projects\Log\Log\bin\Debug\Log.pdb
+C:\Users\dk12\Documents\Visual Studio 2012\Projects\Log\Log\obj\Debug\Log.dll
+C:\Users\dk12\Documents\Visual Studio 2012\Projects\Log\Log\obj\Debug\Log.pdb
+X:\Program Files (x86)\C#\Log\Log\bin\Debug\Log.dll
+X:\Program Files (x86)\C#\Log\Log\bin\Debug\Log.pdb
+X:\Program Files (x86)\C#\Log\Log\obj\Debug\Log.dll
+X:\Program Files (x86)\C#\Log\Log\obj\Debug\Log.pdb
