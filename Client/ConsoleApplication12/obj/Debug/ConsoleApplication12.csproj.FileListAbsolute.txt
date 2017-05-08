@@ -1,0 +1,2 @@
+c:\users\анастасия\documents\visual studio 2012\Projects\ConsoleApplication12\ConsoleApplication12\bin\Debug\ConsoleApplication12.exe.config
+C:\Users\Nitwitz\Desktop\ConsoleApplication12\ConsoleApplication12\bin\Debug\ConsoleApplication12.exe.config
