@@ -34,6 +34,10 @@ namespace ConsoleClient
         /// Счётчик голосования.
         /// </summary>
         public byte voteCount = 0;
+        /// <summary>
+        /// Результат голосования.
+        /// </summary>
+        public bool voteResult = false;
 
         static void Main(string[] args)
         {
