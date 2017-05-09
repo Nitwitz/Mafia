@@ -11,8 +11,15 @@ namespace ClassLibrary
 {
     public class Turns
     {
-
-    
+        /// <summary>
+        /// Счёт голосов.
+        /// </summary>
+        /// <param name="client">Игрок, за которого голосуют.</param>
+        /// <returns>Число голосов.</returns>
+        public static byte Vote(Client client)
+        {
+            return client.voteCount++;
+        }
         /// <summary>
         /// Голосование за убийство.
         /// </summary>
