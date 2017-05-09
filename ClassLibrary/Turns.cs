@@ -24,7 +24,7 @@ namespace ClassLibrary
         /// Голосование за убийство.
         /// </summary>
         /// <param name="choices"></param>
-        public static void Voting(List<Client> clients)
+        public static void Voting()
         {
             //В методе производится сравнение кол-ва голосов каждого из игроков. У кого голсоов больше - тот убит.
         }
@@ -98,25 +98,28 @@ namespace ClassLibrary
         /// <summary>
         /// Ход мафии, выбор жертвы.
         /// </summary>
-        public static void MafiaTurn()
+        public static void MafiaTurn(Client client)
         {
-            //Выбраннй игрок (объект из будущей коллекции игроков) будет помечен. Если до наступления дня метка не будет снята, игрок умрёт.
+            client.mark = true;
         }
 
         /// <summary>
         /// Ход медика, выбор пациента.
         /// </summary>
-        public static void MedicTurn()
+        public static void MedicTurn(Client client)
         {
-            //Выбранный игрок (объект из будущей коллекции игроков), если он был выбран мафией до этого, будет исцелён. Т.е. метка мафии снимается и игрок выживает.
+            client.mark = false;
         }
 
         /// <summary>
         /// Ход комиссара, выбор подозреваемого.
         /// </summary>
-        public static void CommissarTurn()
+        public static void CommissarTurn(Client client)
         {
-            //Выбраннй игрок (объект из будущей коллекции игроков) проверяется. Если комиссар выбрал мафию или же наоборот - комиссар уведомляется об этом.
+           if(client.role==Role.Mafia)
+            {
+                //уведомить комиссара.
+            }
         }
 
         /// <summary>
