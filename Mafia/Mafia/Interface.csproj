@@ -104,6 +104,12 @@
     <None Include="Resources\twenty.wav" />
     <None Include="Resources\carnival-mask-04_pic.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ClassLibrary\ClassLibrary.csproj">
+      <Project>{a7ed4de9-8188-4a63-9ba5-3d9dc0ab1fb1}</Project>
+      <Name>ClassLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

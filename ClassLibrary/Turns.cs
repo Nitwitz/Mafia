@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Sockets;
+using ConsoleClient;
+
 
 namespace ClassLibrary
 {
@@ -19,13 +22,61 @@ namespace ClassLibrary
 
             //В методе производится сравнение кол-ва голосов каждого из игроков. У кого голсоов больше - тот убит.
         }
+
         /// <summary>
         /// Проверка состояния партии.
         /// </summary>
-        public static void check()
+        /// <param name="clients">Список игроков.</param>
+        public static void check(List<Client> clients)
         {
-            //В методе производится проверка на кол-во игроков и мафий. Если в конце дня после голосования остаётся 2 человека и одна фамия, игра заканчивается с победой мафии.
+            byte _civCount = 0;
+            bool _mafiaEx = false;
+            foreach(Client client in clients)
+            {
+                if (client.role == Role.Mafia)
+                    _mafiaEx = true;
+                if (client.role == Role.Civilian || client.role == Role.Commissar || client.role == Role.Doctor)
+                    _civCount++;
+            }
+            if (_mafiaEx == true)
+            {
+                if (_civCount <= 2)
+                { /*игра заканчивается победой мафии*/}
+            }
+            else
+            {
+                /*игра заканчивается победой гражданских*/
+            }
+
         }
+
+        /// <summary>
+        /// Назначение игрокам ролей.
+        /// </summary>
+        /// <param name="clients">Список игроков.</param>
+        public static void Cast(List<Client> clients)
+        {
+            byte _cCount = (byte)clients.Count;
+            Random _rnd = new Random();
+            byte _mafiaIndex = (byte)_rnd.Next(1, _cCount);
+            byte _commissarIndex = (byte)_rnd.Next(1, _cCount);
+            byte _medicIndex = (byte)_rnd.Next(1, _cCount);
+            byte _clientCount = 1;
+            foreach (Client client in clients)
+            {
+                if (_clientCount == _mafiaIndex)
+                    client.role = Role.Mafia;
+                else
+                    if (_clientCount == _commissarIndex)
+                    client.role = Role.Commissar;
+                else
+                    if (_clientCount == _medicIndex)
+                    client.role = Role.Doctor;
+            }
+
+        }
+
+
         /// <summary>
         /// Переподключение игрока.
         /// </summary>

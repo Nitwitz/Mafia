@@ -7,7 +7,7 @@ using System.Net.Sockets;
 
 namespace ConsoleClient
 {
-    class Program
+    public class Client
     {
         /// <summary>
         /// Порт.

@@ -1,0 +1,6 @@
+X:\Program Files (x86)\C#\MafiaHelper\Client\ConsoleApplication12\bin\Debug\ConsoleApplication12.exe.config
+X:\Program Files (x86)\C#\MafiaHelper\Client\ConsoleApplication12\bin\Debug\ConsoleApplication12.exe
+X:\Program Files (x86)\C#\MafiaHelper\Client\ConsoleApplication12\bin\Debug\ConsoleApplication12.pdb
+X:\Program Files (x86)\C#\MafiaHelper\Client\ConsoleApplication12\obj\Debug\Client.csprojResolveAssemblyReference.cache
+X:\Program Files (x86)\C#\MafiaHelper\Client\ConsoleApplication12\obj\Debug\ConsoleApplication12.exe
+X:\Program Files (x86)\C#\MafiaHelper\Client\ConsoleApplication12\obj\Debug\ConsoleApplication12.pdb
