@@ -12,14 +12,13 @@ namespace ClassLibrary
     public class Turns
     {
 
-
+    
         /// <summary>
         /// Голосование за убийство.
         /// </summary>
         /// <param name="choices"></param>
-        public static void voting()
+        public static void Voting(List<Client> clients)
         {
-
             //В методе производится сравнение кол-ва голосов каждого из игроков. У кого голсоов больше - тот убит.
         }
 
@@ -27,7 +26,7 @@ namespace ClassLibrary
         /// Проверка состояния партии.
         /// </summary>
         /// <param name="clients">Список игроков.</param>
-        public static void check(List<Client> clients)
+        public static void Check(List<Client> clients)
         {
             byte _civCount = 0;
             bool _mafiaEx = false;
@@ -72,6 +71,9 @@ namespace ClassLibrary
                 else
                     if (_clientCount == _medicIndex)
                     client.role = Role.Doctor;
+                else
+                    client.role = Role.Civilian;
+                _clientCount++;
             }
 
         }
