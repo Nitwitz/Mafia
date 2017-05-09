@@ -30,6 +30,10 @@ namespace ConsoleClient
         /// Метка указывающая на то, что на игрока указал Мафия.
         /// </summary>
         public bool mark = false;
+        /// <summary>
+        /// Счётчик голосования.
+        /// </summary>
+        public byte voteCount = 0;
 
         static void Main(string[] args)
         {
