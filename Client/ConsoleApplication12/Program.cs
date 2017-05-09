@@ -17,39 +17,38 @@ namespace ConsoleClient
         /// IP-адрес.
         /// </summary>
         const string address = "127.0.0.1";
+
+        /// <summary>
+        /// Имя игрока.
+        /// </summary>
+        public string userName;
+        /// <summary>
+        /// Роль игрока.
+        /// </summary>
+        public Role role;
+        /// <summary>
+        /// Метка указывающая на то, что на игрока указал Мафия.
+        /// </summary>
+        public bool mark = false;
+
         static void Main(string[] args)
         {
-            Console.Write("Введите свое имя:");
-            /// <summary>
-            /// Имя игрока.
-            /// </summary>
-            string userName = Console.ReadLine();
-            /// <summary>
-            /// Роль игрока.
-            /// </summary>
-            Role role;
-            /// <summary>
-            /// Сообщение, получаемое игроком от сервера.
-            /// </summary>
-            string message1;
-            /// <summary>
-            /// Имя игрока, выбираемого голосованием.
-            /// </summary>
-            string otherUserName;
+           
+
             TcpClient client = null;
             try
             {
+               
                 client = new TcpClient(address, port);
                 NetworkStream stream = client.GetStream();
-
+                
                 while (true)
                 {
-                    Console.Write(userName + ": ");
+                    Console.Write(" ");
                     /// <summary>
                     /// Сообщение игрока отправляемое на сервер.
                     /// </summary>
                     string message = Console.ReadLine();
-                    message = String.Format("{0}: {1}", userName, message);
                     /// <summary>
                     /// Преобразуем сообщение в массив байтов.
                     /// </summary>
