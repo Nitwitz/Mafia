@@ -1,9 +1,0 @@
-C:\Users\Nitwitz\Desktop\Mafia\Mafia\bin\Debug\Mafia.exe.config
-C:\Users\Nitwitz\Desktop\Mafia\Mafia\bin\Debug\Mafia.exe
-C:\Users\Nitwitz\Desktop\Mafia\Mafia\bin\Debug\Mafia.pdb
-C:\Users\Nitwitz\Desktop\Mafia\Mafia\obj\Debug\Mafia.FormMenu.resources
-C:\Users\Nitwitz\Desktop\Mafia\Mafia\obj\Debug\Mafia.Play.resources
-C:\Users\Nitwitz\Desktop\Mafia\Mafia\obj\Debug\Mafia.Properties.Resources.resources
-C:\Users\Nitwitz\Desktop\Mafia\Mafia\obj\Debug\Interface.csproj.GenerateResource.Cache
-C:\Users\Nitwitz\Desktop\Mafia\Mafia\obj\Debug\Mafia.exe
-C:\Users\Nitwitz\Desktop\Mafia\Mafia\obj\Debug\Mafia.pdb

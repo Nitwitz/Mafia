@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MafiaHelper.Properties
+namespace Mafia.Properties
 {
 
 

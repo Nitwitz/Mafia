@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("MafiaHelper")]
+[assembly: AssemblyTitle("Mafia")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("MafiaHelper")]
+[assembly: AssemblyProduct("Mafia")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("a541dd68-dc5b-4039-b9e2-bf0a746eb001")]
+[assembly: Guid("8c2f710b-dd6b-4e55-97ca-3b9ec6547d62")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //
