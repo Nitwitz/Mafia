@@ -35,9 +35,9 @@ namespace ConsoleClient
         /// </summary>
         public byte voteCount = 0;
         /// <summary>
-        /// Результат голосования.
+        /// Максимальное число голосов.
         /// </summary>
-        public bool voteResult = false;]
+        public byte voteMax = 0;
 
         static void Main(string[] args)
         {
