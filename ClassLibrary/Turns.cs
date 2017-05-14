@@ -14,7 +14,7 @@ namespace ClassLibrary
         /// <summary>
         /// Счёт голосов.
         /// </summary>
-        /// <param name="client">Игрок, за которого голосуют.</param>
+        /// <param name="client">Игрок, против которого голосуют.</param>
         /// <returns>Число голосов.</returns>
         public static byte Vote(Client client)
         {
@@ -142,5 +142,7 @@ namespace ClassLibrary
             //Пробегается коллекция игроков, если кто-либо имеет метку мафии - умирает.
             //Все игроки уведомляются о текущем состоянии игры.
         }
+
+    
     }
 }

@@ -37,7 +37,7 @@ namespace ConsoleClient
         /// <summary>
         /// Результат голосования.
         /// </summary>
-        public bool voteResult = false;
+        public bool voteResult = false;]
 
         static void Main(string[] args)
         {
