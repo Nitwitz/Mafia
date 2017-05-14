@@ -11,6 +11,8 @@ namespace ClassLibrary
 {
     public class Turns
     {
+
+
         /// <summary>
         /// Счёт голосов.
         /// </summary>
@@ -21,11 +23,31 @@ namespace ClassLibrary
             return client.voteCount++;
         }
         /// <summary>
-        /// Голосование за убийство.
+        /// Определение максимального числа голосоов.
         /// </summary>
-        /// <param name="choices"></param>
-        public static void Voting()
+        /// <param name="clients">Игроки.</param>
+        /// <returns></returns>
+        public static byte MaxVotes(List<Client> clients)
         {
+            byte max = 0;
+            foreach (Client client in clients)
+            {
+                if (client.voteCount > max)
+                    max = client.voteCount;
+            }
+            return (max);
+        }
+        
+        public static void Voting(List<Client> clients)
+        {
+            foreach (Client client in clients)
+            {
+                if (client.voteCount == MaxVotes(clients))
+                {
+                    /*оповестить игроков о результатах голосования и икслючить игрока из игры*/
+                }
+                break;
+            }
             //В методе производится сравнение кол-ва голосов каждого из игроков. У кого голсоов больше - тот убит.
         }
 
