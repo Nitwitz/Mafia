@@ -48,6 +48,10 @@ namespace ClassLibrary
             {
                 if (_civCount <= 2)
                 { /*игра заканчивается победой мафии*/}
+                else
+                {
+                    /*Игра продолжается*/
+                }
             }
             else
             {
@@ -125,8 +129,16 @@ namespace ClassLibrary
         /// <summary>
         /// Наступление дня. Проверка на налдичие мёртвых.
         /// </summary>
-        public static void DayBeginning()
+        public static void DayBeginning(List<Client> clients)
         {
+            foreach(Client client in clients)
+            {
+                if(client.mark==true)
+                {
+                    /*Вывести на экран сообщение о том что игрок погиб и отсоединить игра от игры. */
+                    break;
+                }
+            }
             //Пробегается коллекция игроков, если кто-либо имеет метку мафии - умирает.
             //Все игроки уведомляются о текущем состоянии игры.
         }
