@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Dk_Server 2.0\Ser
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Log", "Log\Log\Log.csproj", "{916549B7-3814-4003-A1C4-434BD4575D8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mafia", "Interface\Mafia.csproj", "{8C2F710B-DD6B-4E55-97CA-3B9EC6547D62}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface", "Interface\Mafia\Interface.csproj", "{8C2F710B-DD6B-4E55-97CA-3B9EC6547D62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

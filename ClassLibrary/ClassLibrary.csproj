@@ -40,18 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Status.cs" />
+    <Compile Include="Role.cs" />
     <Compile Include="Turns.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Client\ConsoleApplication12\Client.csproj">
-      <Project>{9231dc09-10e1-45d2-9c4e-75783b42ab64}</Project>
-      <Name>Client</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Dk_Server 2.0\Server.csproj">
-      <Project>{5f058f55-34b2-4bd2-9c24-7f65fb033a38}</Project>
-      <Name>Server</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
