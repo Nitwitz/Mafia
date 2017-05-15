@@ -31,7 +31,6 @@ namespace Mafia
         /// <param name="e"></param>
         private void buttoexit_Click(object sender, EventArgs e)
         {
-            buttoexit.BackColor = Color.FromArgb(0, SystemColors.Control);
             this.Close();
         }
 
@@ -71,7 +70,7 @@ namespace Mafia
         /// <param name="e"></param>
         private void buttonstart_Click(object sender, EventArgs e)
         {
-
+            
             //Sound.Play_fail();
             start_play();
                 }

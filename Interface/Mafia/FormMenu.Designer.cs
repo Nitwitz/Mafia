@@ -37,7 +37,7 @@
             // 
             // buttoexit
             // 
-            this.buttoexit.BackColor = System.Drawing.SystemColors.Window;
+            this.buttoexit.BackColor = System.Drawing.Color.Transparent;
             this.buttoexit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttoexit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttoexit.Font = new System.Drawing.Font("French Script MT", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -65,7 +65,7 @@
             // 
             // buttonstart
             // 
-            this.buttonstart.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonstart.BackColor = System.Drawing.Color.Transparent;
             this.buttonstart.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonstart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonstart.Font = new System.Drawing.Font("French Script MT", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -79,7 +79,7 @@
             // 
             // buttonabout
             // 
-            this.buttonabout.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonabout.BackColor = System.Drawing.Color.Transparent;
             this.buttonabout.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonabout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonabout.Font = new System.Drawing.Font("French Script MT", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
