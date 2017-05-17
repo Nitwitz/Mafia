@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.Collections;
 using System.Threading;
+using ClassLibrary;
 
 namespace ConsoleServer
 {

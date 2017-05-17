@@ -8,6 +8,8 @@ using System.Net.Sockets;
 using System.Collections;
 using System.Threading;
 using Log;
+using ClassLibrary;
+using Mafia;
 
 
 
@@ -22,9 +24,8 @@ namespace ConsoleServer
         /// <param name="p">Параметры.</param>
         public static void Print(string f, params object[] p)
         {
-#if CS
+
             Console.WriteLine(f, p);
-#endif
         }
 
         /// <summary>
@@ -47,9 +48,9 @@ namespace ConsoleServer
 
         
 
-        static void Main(object args)
+        static void Main(string[] args)
         {
-            string[] _args = (string[])args;
+            //string[] _args = (string[])args;
 
             _log.WriteEntry("MyServer", "Сервер запускается.", LogEventType.Info);
             tcpServer = new TcpListener(new IPEndPoint(IPAddress.Loopback, 1000));
@@ -72,8 +73,10 @@ namespace ConsoleServer
                 lock (clients)
                 {
                     clients.Add(_client);
+                    _client.Client.Send(Encoding.Default.GetBytes("new"));
                 }
                 Print("Подключился новый клиент: {0}", _client.Client.RemoteEndPoint);
+               if()
             }
         }
 

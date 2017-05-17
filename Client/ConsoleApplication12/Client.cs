@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Sockets;
+using ClassLibrary;
 
 namespace ConsoleClient
 {
@@ -12,7 +13,7 @@ namespace ConsoleClient
         /// <summary>
         /// Порт.
         /// </summary>
-        const int port = 8888;
+        const int port = 1000;
         /// <summary>
         /// IP-адрес.
         /// </summary>
@@ -65,7 +66,6 @@ namespace ConsoleClient
                     /// Отправка сообщения.
                     /// </summary>
                     stream.Write(data, 0, data.Length);
-
                     data = new byte[64]; // буфер для получаемых данных
                     StringBuilder builder = new StringBuilder();
                     int bytes = 0;

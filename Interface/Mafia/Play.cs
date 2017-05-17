@@ -45,9 +45,10 @@ namespace Mafia
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Confirm_Click(object sender, EventArgs e)
+        public void Confirm_Click(object sender, EventArgs e)
         {
             start_lead();
+            
         }
 
       
