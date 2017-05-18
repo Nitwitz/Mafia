@@ -15,6 +15,15 @@ namespace ConsoleServer
     /// </summary>
    public class Task
     {
+
+        /// <summary>
+        /// Сообщение, полученное от клиента.
+        /// </summary>
+        private string message;
+        /// <summary>
+        /// Сокет клиента.
+        /// </summary>
+        private Socket client;
         /// <summary>
         /// Поток обработки сообщений от клиентов.
         /// </summary>
@@ -54,14 +63,7 @@ namespace ConsoleServer
         {
             taskQueue.Enqueue(new Task(client, message));
         }
-        /// <summary>
-        /// Сообщение, полученное от клиента.
-        /// </summary>
-        private string message;
-        /// <summary>
-        /// Сокет клиента.
-        /// </summary>
-        private Socket client;
+      
         /// <summary>
         /// Инициализирует экземпляр класса Task.
         /// </summary>
@@ -77,6 +79,73 @@ namespace ConsoleServer
         /// </summary>
         public void Solve()
         {
+            bool _mhbm = false;           //<--мафия сделала свой выбор.
+            bool _heal = false;
+            bool _chek = false;
+            bool _death = false;
+            if(message.IndexOf('#')==0)
+            {
+                 //присовить имя клиенту, которое начинается со знака #
+            }
+            if(/*Все клиенты нажали кнопку Готов*/ true) 
+            {
+                while (true)
+                {
+                    client.Send(Encoding.Default.GetBytes("mafiaturn"));
+                    if(message == "markhasbeenmade")
+                    {
+                        //запомнить помеченного клиента.
+                        _mhbm = true;
+                    }
+                    if(_mhbm==true)
+                        client.Send(Encoding.Default.GetBytes("medicturn"));
+
+                    if(message=="heal")
+                    {
+                        //снять метку с клиента если она на нём есть.
+                        _heal = true;
+                    }
+                    if(_heal==true)
+                        client.Send(Encoding.Default.GetBytes("commissarturn"));
+                    if(message=="chek")
+                    {
+                        //Сообщить комиссару мафия ли указанный игрок.
+                        _chek = true;
+                    }
+                    if(_chek==true)
+                        client.Send(Encoding.Default.GetBytes("day"));
+                    if (message == "chekme")
+                    {
+                        //проверяется есть ли метка, если есть, то клиент отсоединяется
+                        _death = true;
+                    }
+                    if(_death ==true)
+                    {
+                        //метод кторые оповещает каждого клиента о результатах хода, а так же отправляе всем клиентам сообщение о начале голосования.
+                    }
+                    else
+                    {
+                        //метод который оповещает всех о результатах хода, а так же отправляе всем клиентам сообщение о начале голосования.
+                    }
+                    if(message.IndexOf("|")==0)
+                    {
+                        //Считывается имя клиента после | и этому клиенту начисляется голос.
+                    }
+                    if(/*Все проголосовали*/true)
+                    {
+                        /*Метод считающий голоса*/
+                        //ОТсоединяется от сервера игрок и всем рассылается сообщение об этом.
+                        if(/**Проверка состояния партии*/true)
+                        {
+                            //Если игра окончена каким-либо рузультатом, то игра заканчивается.
+                        }
+                        else
+                        {
+                            client.Send(Encoding.Default.GetBytes("mafiaturn"));
+                        }
+                    }
+                }
+            }
             Program.Print("Клиент {0} прислал сообщение: >>>{1}<<<", client.RemoteEndPoint, message);
             client.Send(Encoding.Default.GetBytes("Ваша заявка принята"));
         }

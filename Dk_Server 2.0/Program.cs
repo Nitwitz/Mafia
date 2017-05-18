@@ -9,7 +9,8 @@ using System.Collections;
 using System.Threading;
 using Log;
 using ClassLibrary;
-using Mafia;
+
+
 
 
 
@@ -27,6 +28,7 @@ namespace ConsoleServer
 
             Console.WriteLine(f, p);
         }
+      
 
         /// <summary>
         /// Сервер.
