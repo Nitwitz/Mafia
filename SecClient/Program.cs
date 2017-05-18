@@ -76,13 +76,31 @@ namespace Client
                 data = new byte[1024];
                 StringBuilder _str = new StringBuilder();
                 int bytes = 0;
+                string message = null;
+
                 /// <summary>
                 /// Получаем ответ от сервера.
                 /// </summary>
                 do
                 {
                     bytes = _socket.Receive(data, data.Length, 0);
-                    _str.Append(Encoding.Unicode.GetString(data, 0, bytes));
+                    message = _str.Append(Encoding.Unicode.GetString(data, 0, bytes)).ToString();
+                    if (message == "mafiaturn")
+                    {
+                        //
+                    }
+                    if (message == "medicturn")
+                    {
+                        //
+                    }
+                    if (message == "commissarturn")
+                    {
+                        //
+                    }
+                    if (message == "day")
+                    {
+                        //
+                    }
                 }
                 while (_socket.Available > 0);
                 Console.WriteLine("Ответ: " + _str.ToString());
