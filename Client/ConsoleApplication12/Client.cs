@@ -19,27 +19,7 @@ namespace ConsoleClient
         /// </summary>
         const string address = "127.0.0.1";
 
-        /// <summary>
-        /// Имя игрока.
-        /// </summary>
-        public string userName;
-        /// <summary>
-        /// Роль игрока.
-        /// </summary>
-        public Role role;
-        /// <summary>
-        /// Метка указывающая на то, что на игрока указал Мафия.
-        /// </summary>
-        public bool mark = false;
-        /// <summary>
-        /// Счётчик голосования.
-        /// </summary>
-        public byte voteCount = 0;
-        /// <summary>
-        /// Максимальное число голосов.
-        /// </summary>
-        public byte voteMax = 0;
-
+       
         static void Main(string[] args)
         {
            

@@ -51,9 +51,10 @@ namespace ConsoleServer
         static void Main(string[] args)
         {
             //string[] _args = (string[])args;
-
+            IPAddress _ip = IPAddress.Parse("127.0.0.1");
+            IPEndPoint _ipep = new IPEndPoint(_ip, 1000);
             _log.WriteEntry("MyServer", "Сервер запускается.", LogEventType.Info);
-            tcpServer = new TcpListener(new IPEndPoint(IPAddress.Loopback, 1000));
+            tcpServer = new TcpListener(_ipep);
             tcpServer.Start();
             TcpClient _client;
 
@@ -76,7 +77,7 @@ namespace ConsoleServer
                     _client.Client.Send(Encoding.Default.GetBytes("new"));
                 }
                 Print("Подключился новый клиент: {0}", _client.Client.RemoteEndPoint);
-               if()
+           
             }
         }
 
