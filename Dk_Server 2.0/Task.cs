@@ -7,7 +7,6 @@ using System.Net.Sockets;
 using System.Collections;
 using System.Threading;
 using ClassLibrary;
-
 namespace ConsoleServer
 {
     /// <summary>
@@ -15,7 +14,7 @@ namespace ConsoleServer
     /// </summary>
    public class Task
     {
-
+        
         /// <summary>
         /// Сообщение, полученное от клиента.
         /// </summary>
@@ -87,7 +86,7 @@ namespace ConsoleServer
             {
                  //присовить имя клиенту, которое начинается со знака #
             }
-            if(/*Все клиенты нажали кнопку Готов*/ true) 
+            if(/*Все клиенты нажали кнопку Готов*/ false) 
             {
                 while (true)
                 {
@@ -97,23 +96,31 @@ namespace ConsoleServer
                         //запомнить помеченного клиента.
                         _mhbm = true;
                     }
-                    if(_mhbm==true)
+                    if (_mhbm == true)
+                    {
                         client.Send(Encoding.Default.GetBytes("medicturn"));
-
+                        _mhbm = false;
+                    }
                     if(message=="heal")
                     {
                         //снять метку с клиента если она на нём есть.
                         _heal = true;
                     }
-                    if(_heal==true)
+                    if (_heal == true)
+                    {
                         client.Send(Encoding.Default.GetBytes("commissarturn"));
+                        _heal = false;
+                    }
                     if(message=="chek")
                     {
                         //Сообщить комиссару мафия ли указанный игрок.
                         _chek = true;
                     }
-                    if(_chek==true)
+                    if (_chek == true)
+                    {
                         client.Send(Encoding.Default.GetBytes("day"));
+                        _chek = false;
+                    }
                     if (message == "chekme")
                     {
                         //проверяется есть ли метка, если есть, то клиент отсоединяется
@@ -122,6 +129,7 @@ namespace ConsoleServer
                     if(_death ==true)
                     {
                         //метод кторые оповещает каждого клиента о результатах хода, а так же отправляе всем клиентам сообщение о начале голосования.
+                        _death = false;
                     }
                     else
                     {

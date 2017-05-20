@@ -59,21 +59,24 @@ namespace Client
                 /// Подключаемся к удаленной точке.
                 /// </summary> 
                 _socket.Connect(ipPoint);
-                Console.Write("Введите сообщение:");
-                /// <summary>
-                /// Вводим сообщение.
-                /// </summary> 
-                string _mess = Console.ReadLine();
-                byte[] data = Encoding.Unicode.GetBytes(_mess);
-                /// <summary>
-                /// Отправляем данные через сокет.
-                /// </summary> 
-                _socket.Send(data);
+
+
+                ///// <summary>
+                ///// Вводим сообщение.
+                ///// </summary> 
+                //string _mess = Console.ReadLine();
+                //byte[] data = Encoding.Unicode.GetBytes(_mess);
+                ///// <summary>
+                ///// Отправляем данные через сокет.
+                ///// </summary> 
+                //_socket.Send(data);
+
+
 
                 /// <summary>
                 /// Буфер для ответа.
                 /// </summary> 
-                data = new byte[1024];
+                byte[] answer = new byte[1024];
                 StringBuilder _str = new StringBuilder();
                 int bytes = 0;
                 string message = null;
@@ -83,8 +86,12 @@ namespace Client
                 /// </summary>
                 do
                 {
-                    bytes = _socket.Receive(data, data.Length, 0);
-                    message = _str.Append(Encoding.Unicode.GetString(data, 0, bytes)).ToString();
+                    bytes = _socket.Receive(answer, answer.Length, 0);
+                    message = _str.Append(Encoding.Unicode.GetString(answer, 0, bytes)).ToString();
+                    if (message == "new")
+                    {
+                        Console.WriteLine("Ответ: " + _str.ToString());
+                    }
                     if (message == "mafiaturn")
                     {
                         //
@@ -104,11 +111,13 @@ namespace Client
                 }
                 while (_socket.Available > 0);
                 Console.WriteLine("Ответ: " + _str.ToString());
-                /// <summary>
-                /// Закрываем сокет.
-                /// </summary>
-                _socket.Shutdown(SocketShutdown.Both);
-                _socket.Close();
+
+
+                ///// <summary>
+                ///// Закрываем сокет.
+                ///// </summary>
+                //_socket.Shutdown(SocketShutdown.Both);
+                //_socket.Close();
             }
             catch (Exception ex)
             {

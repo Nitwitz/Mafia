@@ -66,6 +66,8 @@ namespace ConsoleServer
             receiveThread = new Thread(new ThreadStart(receive));
             receiveThread.IsBackground = true;
             receiveThread.Start();
+
+
             Task.RunQueueThread();
 
             _log.WriteEntry("MyServer", "Сервер успешно запущен.", LogEventType.Warning);
@@ -77,6 +79,7 @@ namespace ConsoleServer
                 {
                     clients.Add(_client);
                     _client.Client.Send(Encoding.Default.GetBytes("new"));
+
                 }
                 Print("Подключился новый клиент: {0}", _client.Client.RemoteEndPoint);
            
