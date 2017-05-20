@@ -87,10 +87,10 @@ namespace Client
                 do
                 {
                     bytes = _socket.Receive(answer, answer.Length, 0);
-                    message = _str.Append(Encoding.Unicode.GetString(answer, 0, bytes)).ToString();
+                    message = _str.Append(Encoding.ASCII.GetString(answer, 0, bytes)).ToString();
                     if (message == "new")
                     {
-                        Console.WriteLine("Ответ: " + _str.ToString());
+                        Console.WriteLine("Статус: " + message);
                     }
                     if (message == "mafiaturn")
                     {
@@ -110,7 +110,6 @@ namespace Client
                     }
                 }
                 while (_socket.Available > 0);
-                Console.WriteLine("Ответ: " + _str.ToString());
 
 
                 ///// <summary>
