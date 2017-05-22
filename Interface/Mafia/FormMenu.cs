@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Mafia
 {
-/// <summary>
-/// Меню, окрывается при запуске
-/// </summary>
+    /// <summary>
+    /// Меню, окрывается при запуске
+    /// </summary>
     public partial class FormMenu : Form
     {
         public FormMenu()
@@ -21,7 +21,7 @@ namespace Mafia
             buttoexit.BackColor = Color.Transparent;
             buttonabout.BackColor = Color.Transparent;
             buttonstart.BackColor = Color.Transparent;
-            
+
 
         }
         /// <summary>
@@ -54,14 +54,22 @@ namespace Mafia
                 boxsound.Text = "Без звука";
             }
         }
-        
+
         /// <summary>
         /// Открытие формы Play
         /// </summary>
         private void start_play()
         {
             Play play = new Play();
-            play.ShowDialog();
+            if (play.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+
+                //play.UserName
+            }
+
+
+
+
         }
         /// <summary>
         /// Кнопка запуска игры
@@ -70,10 +78,10 @@ namespace Mafia
         /// <param name="e"></param>
         private void buttonstart_Click(object sender, EventArgs e)
         {
-            
+
             //Sound.Play_fail();
             start_play();
-                }
+        }
         /// <summary>
         /// Кнопка информации об игре
         /// </summary>
@@ -82,11 +90,11 @@ namespace Mafia
         private void buttonabout_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Данное приложение созданно для замены ведущего в игре мафия  ", "Информация о игре", MessageBoxButtons.OK);
-           
-                
+
+
 
         }
 
-       
+
     }
 }

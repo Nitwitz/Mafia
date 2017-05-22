@@ -26,20 +26,16 @@ namespace Mafia
         /// <param name="e"></param>
         private void Cansel_Click(object sender, EventArgs e)
         {
-           Close();
+            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            Close();
 
         }
 
-      
-
-        /// <summary>
-        /// Открытие окна, с основной игрой
-        /// </summary>
-        private void start_lead()
+        public string UserName
         {
-            Lead lead = new Lead();
-            lead.ShowDialog();
+            get { return textBox1.Text; }
         }
+
         /// <summary>
         /// Подтверждение о начале игры
         /// </summary>
@@ -47,10 +43,11 @@ namespace Mafia
         /// <param name="e"></param>
         public void Confirm_Click(object sender, EventArgs e)
         {
-            start_lead();
-            
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            Close();
+
         }
 
-      
+
     }
 }

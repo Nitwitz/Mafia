@@ -15,15 +15,15 @@ namespace Mafia
         public Lead()
         {
             InitializeComponent();
-            
+
         }
 
         private void Info_Click(object sender, EventArgs e)
         {
-          
+
             //DialogResult result =
         }
 
-     
+
     }
 }
