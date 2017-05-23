@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Sockets;
+using System.Net;
 
 namespace Mafia
 {
@@ -33,7 +35,15 @@ namespace Mafia
 
         public string UserName
         {
-            get { return textBox1.Text; }
+            get { return txtName.Text; }
+        }
+        public string Address
+        {
+            get { return txtAdress.Text; }
+        }
+        public string Port
+        {
+            get { return txtPort.Text; }
         }
 
         /// <summary>

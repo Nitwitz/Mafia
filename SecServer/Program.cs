@@ -37,7 +37,7 @@ namespace ConsoleServer
         /// <summary>
         /// Массив, содержащий подключения клиентов.
         /// </summary>
-        private static List<SClient> clients = new List<SClient>();
+        public static List<SClient> clients = new List<SClient>();
         /// <summary>
         /// Поток проверки доступности клиентов.
         /// </summary>
@@ -46,7 +46,7 @@ namespace ConsoleServer
         /// Поток получения данных от клиентов.
         /// </summary>
         private static Thread receiveThread;
-        private static ILog _log = new FileLog("X:\\123.txt");
+        //private static ILog _log = new FileLog("X:\\123.txt");
 
 
 
@@ -55,7 +55,7 @@ namespace ConsoleServer
             //string[] _args = (string[])args;
             IPAddress _ip = IPAddress.Parse("127.0.0.1");
             IPEndPoint _ipep = new IPEndPoint(_ip, 1000);
-            _log.WriteEntry("MyServer", "Сервер запускается.", LogEventType.Info);
+            //_log.WriteEntry("MyServer", "Сервер запускается.", LogEventType.Info);
             tcpServer = new TcpListener(_ipep);
             tcpServer.Start();
             SClient _client;
@@ -70,7 +70,7 @@ namespace ConsoleServer
 
             Task.RunQueueThread();
 
-            _log.WriteEntry("MyServer", "Сервер успешно запущен.", LogEventType.Warning);
+            //_log.WriteEntry("MyServer", "Сервер успешно запущен.", LogEventType.Warning);
 
             while (true)
             {
@@ -110,7 +110,7 @@ namespace ConsoleServer
                         catch (SocketException)
                         {
                             Print("Клиент более недоступен: {0}", _client.Client.RemoteEndPoint);
-                            _log.WriteEntry("MyServer", string.Format("Клиент более недоступен: {0}", _client.Client.RemoteEndPoint), LogEventType.Warning);
+                            //_log.WriteEntry("MyServer", string.Format("Клиент более недоступен: {0}", _client.Client.RemoteEndPoint), LogEventType.Warning);
                             clients.Remove(_client);
                             i--;
                         }

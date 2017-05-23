@@ -73,18 +73,25 @@ namespace ConsoleServer
             this.client = client;
             this.message = message;
         }
+        
         /// <summary>
         /// Выполняет задачу, сформированную на основе данных, полученных от клиента.
         /// </summary>
         public void Solve()
         {
+            
+            byte _ready;
             bool _chek = false;
             bool _death = false;
-            if (message.IndexOf('#') == 0)
-            {
-                //присовить имя клиенту, которое начинается со знака #
-            }
-            if (/*Все клиенты нажали кнопку Готов*/ false)
+         
+                if (message.IndexOf('#') == 0)
+                {
+                    client.userName = message.Substring(1);
+                    Console.Write(client.userName);
+                }
+                if (message.Equals("*"))
+                    _ready++;            
+            if (_ready == )
             {
                 while (true)
                 {
@@ -144,7 +151,7 @@ namespace ConsoleServer
                     }
                 }
             }
-            Program.Print("Клиент {0} прислал сообщение: >>>{1}<<<", client.Client.RemoteEndPoint, message);
+            Program.Print("Клиент {0} прислал сообщение: {1}", client.Client.RemoteEndPoint, client.userName);
             client.Client.Send(Encoding.Default.GetBytes("Ваша заявка принята"));
         }
 

@@ -7,14 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Sockets;
+using System.Net;
+using System.Threading;
 
 namespace Mafia
 {
+    
+
     /// <summary>
     /// Меню, окрывается при запуске
     /// </summary>
     public partial class FormMenu : Form
     {
+        private Thread _clientThread;
+        /// <summary>
+        /// Клиент.
+        /// </summary>
+        Client.Client _client = new Client.Client();
+
         public FormMenu()
         {
             InitializeComponent();
@@ -24,6 +35,7 @@ namespace Mafia
 
 
         }
+        
         /// <summary>
         /// Выход из игры
         /// </summary>
@@ -55,22 +67,8 @@ namespace Mafia
             }
         }
 
-        /// <summary>
-        /// Открытие формы Play
-        /// </summary>
-        private void start_play()
-        {
-            Play play = new Play();
-            if (play.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
+       
 
-                //play.UserName
-            }
-
-
-
-
-        }
         /// <summary>
         /// Кнопка запуска игры
         /// </summary>
@@ -79,8 +77,20 @@ namespace Mafia
         private void buttonstart_Click(object sender, EventArgs e)
         {
 
-            //Sound.Play_fail();
-            start_play();
+            Play play = new Play();
+            if (play.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                _client.userName = play.UserName;
+                _client._socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                _client._socket.Connect(play.Address, int.Parse(play.Port));
+                _clientThread = new Thread(new ThreadStart(_clientReaction));
+                _clientThread.Start();
+
+
+                  byte[] data = Encoding.Unicode.GetBytes("#"+_client.userName);
+                 _client._socket.Send(data);
+                
+            }
         }
         /// <summary>
         /// Кнопка информации об игре
@@ -91,10 +101,59 @@ namespace Mafia
         {
             DialogResult result = MessageBox.Show("Данное приложение созданно для замены ведущего в игре мафия  ", "Информация о игре", MessageBoxButtons.OK);
 
-
-
+        }
+        /// <summary>
+        /// //
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            Lead lead = new Lead();
+            byte[] data = Encoding.Unicode.GetBytes("*");
+            _client._socket.Send(data);
+            lead.Show();
         }
 
+        private void _clientReaction()
+        {
+             /// <summary>
+                /// Буфер для ответа.
+                /// </summary> 
+                byte[] answer = new byte[1024];
+                StringBuilder _str = new StringBuilder();
+                int bytes = 0;
+                string message = null;
+
+            do
+            {
+                bytes = _client._socket.Receive(answer, answer.Length, 0);
+                message = _str.Append(Encoding.ASCII.GetString(answer, 0, bytes)).ToString();
+                if (message == "new")
+                {
+                 //
+                }
+                if (message == "mafiaturn")
+                {
+                    //
+                }
+                if (message == "medicturn")
+                {
+                    //
+                }
+                if (message == "commissarturn")
+                {
+                    //
+                }
+                if (message == "day")
+                {
+                    //
+                }
+            }
+            while (_client._socket.Available > 0);
+        }
+
+       
 
     }
 }

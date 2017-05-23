@@ -33,6 +33,7 @@
             this.boxsound = new System.Windows.Forms.CheckBox();
             this.buttonstart = new System.Windows.Forms.Button();
             this.buttonabout = new System.Windows.Forms.Button();
+            this.btnStart = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttoexit
@@ -91,6 +92,16 @@
             this.buttonabout.UseVisualStyleBackColor = false;
             this.buttonabout.Click += new System.EventHandler(this.buttonabout_Click);
             // 
+            // btnStart
+            // 
+            this.btnStart.Location = new System.Drawing.Point(78, 186);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(98, 23);
+            this.btnStart.TabIndex = 5;
+            this.btnStart.Text = "Start";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
             // FormMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -99,6 +110,7 @@
             this.BackgroundImage = global::Mafia.Properties.Resources.gJVkm2hr1r8;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(262, 439);
+            this.Controls.Add(this.btnStart);
             this.Controls.Add(this.buttonabout);
             this.Controls.Add(this.buttonstart);
             this.Controls.Add(this.boxsound);
@@ -122,6 +134,7 @@
         private System.Windows.Forms.CheckBox boxsound;
         private System.Windows.Forms.Button buttonstart;
         private System.Windows.Forms.Button buttonabout;
+        private System.Windows.Forms.Button btnStart;
     }
 }
 

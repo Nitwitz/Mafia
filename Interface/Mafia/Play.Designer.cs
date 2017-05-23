@@ -30,9 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Play));
             this.Cansel = new System.Windows.Forms.Button();
-            this.Enter = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.EnterName = new System.Windows.Forms.Label();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.Confirm = new System.Windows.Forms.Button();
+            this.EnterAdress = new System.Windows.Forms.Label();
+            this.txtAdress = new System.Windows.Forms.TextBox();
+            this.EnterPort = new System.Windows.Forms.Label();
+            this.txtPort = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Cansel
@@ -47,35 +51,75 @@
             this.Cansel.UseVisualStyleBackColor = false;
             this.Cansel.Click += new System.EventHandler(this.Cansel_Click);
             // 
-            // Enter
+            // EnterName
             // 
-            this.Enter.BackColor = System.Drawing.Color.White;
-            this.Enter.Cursor = System.Windows.Forms.Cursors.No;
-            this.Enter.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Enter.Location = new System.Drawing.Point(55, 60);
-            this.Enter.Name = "Enter";
-            this.Enter.Size = new System.Drawing.Size(159, 24);
-            this.Enter.TabIndex = 1;
-            this.Enter.Text = "Enter your name";
-            this.Enter.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.EnterName.BackColor = System.Drawing.Color.White;
+            this.EnterName.Cursor = System.Windows.Forms.Cursors.No;
+            this.EnterName.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.EnterName.Location = new System.Drawing.Point(55, 9);
+            this.EnterName.Name = "EnterName";
+            this.EnterName.Size = new System.Drawing.Size(159, 24);
+            this.EnterName.TabIndex = 1;
+            this.EnterName.Text = "Введите Имя:";
+            this.EnterName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // textBox1
+            // txtName
             // 
-            this.textBox1.Location = new System.Drawing.Point(60, 87);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(143, 20);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtName.Location = new System.Drawing.Point(60, 36);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(143, 20);
+            this.txtName.TabIndex = 2;
+            this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Confirm
             // 
-            this.Confirm.Location = new System.Drawing.Point(12, 161);
+            this.Confirm.Location = new System.Drawing.Point(12, 175);
             this.Confirm.Name = "Confirm";
             this.Confirm.Size = new System.Drawing.Size(87, 23);
             this.Confirm.TabIndex = 3;
             this.Confirm.Text = "Confirm";
             this.Confirm.UseVisualStyleBackColor = true;
             this.Confirm.Click += new System.EventHandler(this.Confirm_Click);
+            // 
+            // EnterAdress
+            // 
+            this.EnterAdress.BackColor = System.Drawing.Color.White;
+            this.EnterAdress.Cursor = System.Windows.Forms.Cursors.No;
+            this.EnterAdress.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.EnterAdress.Location = new System.Drawing.Point(55, 59);
+            this.EnterAdress.Name = "EnterAdress";
+            this.EnterAdress.Size = new System.Drawing.Size(159, 24);
+            this.EnterAdress.TabIndex = 4;
+            this.EnterAdress.Text = "Введите Адресс:";
+            this.EnterAdress.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // txtAdress
+            // 
+            this.txtAdress.Location = new System.Drawing.Point(60, 86);
+            this.txtAdress.Name = "txtAdress";
+            this.txtAdress.Size = new System.Drawing.Size(143, 20);
+            this.txtAdress.TabIndex = 5;
+            this.txtAdress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // EnterPort
+            // 
+            this.EnterPort.BackColor = System.Drawing.Color.White;
+            this.EnterPort.Cursor = System.Windows.Forms.Cursors.No;
+            this.EnterPort.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.EnterPort.Location = new System.Drawing.Point(55, 109);
+            this.EnterPort.Name = "EnterPort";
+            this.EnterPort.Size = new System.Drawing.Size(159, 24);
+            this.EnterPort.TabIndex = 6;
+            this.EnterPort.Text = "Введите Порт:";
+            this.EnterPort.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // txtPort
+            // 
+            this.txtPort.Location = new System.Drawing.Point(60, 135);
+            this.txtPort.Name = "txtPort";
+            this.txtPort.Size = new System.Drawing.Size(143, 20);
+            this.txtPort.TabIndex = 7;
+            this.txtPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Play
             // 
@@ -84,9 +128,13 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::Mafia.Properties.Resources.GyMNem8KHsI;
             this.ClientSize = new System.Drawing.Size(278, 477);
+            this.Controls.Add(this.txtPort);
+            this.Controls.Add(this.EnterPort);
+            this.Controls.Add(this.txtAdress);
+            this.Controls.Add(this.EnterAdress);
             this.Controls.Add(this.Confirm);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.Enter);
+            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.EnterName);
             this.Controls.Add(this.Cansel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -103,8 +151,12 @@
         #endregion
 
         private System.Windows.Forms.Button Cansel;
-        private System.Windows.Forms.Label Enter;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label EnterName;
+        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Button Confirm;
+        private System.Windows.Forms.Label EnterAdress;
+        private System.Windows.Forms.TextBox txtAdress;
+        private System.Windows.Forms.Label EnterPort;
+        private System.Windows.Forms.TextBox txtPort;
     }
 }
