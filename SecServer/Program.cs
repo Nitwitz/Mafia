@@ -48,7 +48,7 @@ namespace ConsoleServer
         private static Thread receiveThread;
         //private static ILog _log = new FileLog("X:\\123.txt");
 
-
+        
 
         static void Main(string[] args)
         {
@@ -150,7 +150,37 @@ namespace ConsoleServer
             }
         }
 
-
+        /// <summary>
+        /// Проверка готовности всех игроков.
+        /// </summary>
+        /// <returns></returns>
+        public static bool Ready (byte _ready)
+        {
+           
+            if (_ready.Equals(clients.Count))
+                return true;
+            else
+                return false;
+        }
+        
+        /// <summary>
+        /// Отправка каждому из киентов списка клиентов.
+        /// </summary>
+        public static void SendList ()
+        {
+            string mesSocket;
+            string mesName;
+            foreach(SClient client in clients)
+            {
+                foreach (SClient _client in clients)
+                {
+                    mesSocket = _client.Client.ToString();
+                    client.Client.Send(Encoding.Default.GetBytes("S|"+mesSocket));  
+                    mesName = _client.userName;
+                    client.Client.Send(Encoding.Default.GetBytes("N|"+mesName));    
+                }
+            }
+        }
 
     }
 }

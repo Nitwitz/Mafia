@@ -14,7 +14,11 @@ namespace ConsoleServer
     /// </summary>
     public class Task
     {
-
+        /// <summary>
+        /// Кол-во готовых к игре игроков.
+        /// </summary>
+        public byte _ready = 0;
+        
         /// <summary>
         /// Сообщение, полученное от клиента.
         /// </summary>
@@ -80,7 +84,7 @@ namespace ConsoleServer
         public void Solve()
         {
             
-            byte _ready;
+            
             bool _chek = false;
             bool _death = false;
          
@@ -89,10 +93,12 @@ namespace ConsoleServer
                     client.userName = message.Substring(1);
                     Console.Write(client.userName);
                 }
-                if (message.Equals("*"))
-                    _ready++;            
-            if (_ready == )
+            if (message.Equals("*"))
+                _ready++;
+                               
+            if (ConsoleServer.Program.Ready(_ready).Equals(true))
             {
+                ConsoleServer.Program.SendList();
                 while (true)
                 {
                     client.Client.Send(Encoding.Default.GetBytes("mafiaturn"));
