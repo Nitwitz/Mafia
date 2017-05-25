@@ -34,6 +34,10 @@
             this.buttonstart = new System.Windows.Forms.Button();
             this.buttonabout = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
+            this.pnlGame = new System.Windows.Forms.Panel();
+            this.ListOfPLayers = new System.Windows.Forms.ListBox();
+            this.btnOk = new System.Windows.Forms.Button();
+            this.pnlGame.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttoexit
@@ -41,7 +45,7 @@
             this.buttoexit.BackColor = System.Drawing.Color.Transparent;
             this.buttoexit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttoexit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttoexit.Font = new System.Drawing.Font("French Script MT", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttoexit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttoexit.ForeColor = System.Drawing.Color.Transparent;
             this.buttoexit.Location = new System.Drawing.Point(89, 328);
             this.buttoexit.Name = "buttoexit";
@@ -69,7 +73,7 @@
             this.buttonstart.BackColor = System.Drawing.Color.Transparent;
             this.buttonstart.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonstart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonstart.Font = new System.Drawing.Font("French Script MT", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonstart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonstart.ForeColor = System.Drawing.Color.Transparent;
             this.buttonstart.Location = new System.Drawing.Point(89, 215);
             this.buttonstart.Name = "buttonstart";
@@ -83,7 +87,7 @@
             this.buttonabout.BackColor = System.Drawing.Color.Transparent;
             this.buttonabout.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonabout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonabout.Font = new System.Drawing.Font("French Script MT", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonabout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonabout.ForeColor = System.Drawing.Color.Transparent;
             this.buttonabout.Location = new System.Drawing.Point(89, 272);
             this.buttonabout.Name = "buttonabout";
@@ -102,6 +106,33 @@
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
+            // pnlGame
+            // 
+            this.pnlGame.BackColor = System.Drawing.Color.Red;
+            this.pnlGame.Controls.Add(this.btnOk);
+            this.pnlGame.Controls.Add(this.ListOfPLayers);
+            this.pnlGame.Location = new System.Drawing.Point(-7, -6);
+            this.pnlGame.Name = "pnlGame";
+            this.pnlGame.Size = new System.Drawing.Size(270, 448);
+            this.pnlGame.TabIndex = 6;
+            // 
+            // ListOfPLayers
+            // 
+            this.ListOfPLayers.FormattingEnabled = true;
+            this.ListOfPLayers.Location = new System.Drawing.Point(44, 58);
+            this.ListOfPLayers.Name = "ListOfPLayers";
+            this.ListOfPLayers.Size = new System.Drawing.Size(191, 290);
+            this.ListOfPLayers.TabIndex = 0;
+            // 
+            // btnOk
+            // 
+            this.btnOk.Location = new System.Drawing.Point(182, 365);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(75, 23);
+            this.btnOk.TabIndex = 1;
+            this.btnOk.Text = "Выбрать";
+            this.btnOk.UseVisualStyleBackColor = true;
+            // 
             // FormMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -110,6 +141,7 @@
             this.BackgroundImage = global::Mafia.Properties.Resources.gJVkm2hr1r8;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(262, 439);
+            this.Controls.Add(this.pnlGame);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.buttonabout);
             this.Controls.Add(this.buttonstart);
@@ -124,6 +156,8 @@
             this.Name = "FormMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mafia";
+            this.Load += new System.EventHandler(this.FormMenu_Load);
+            this.pnlGame.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -135,6 +169,9 @@
         private System.Windows.Forms.Button buttonstart;
         private System.Windows.Forms.Button buttonabout;
         private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Panel pnlGame;
+        private System.Windows.Forms.ListBox ListOfPLayers;
+        private System.Windows.Forms.Button btnOk;
     }
 }
 

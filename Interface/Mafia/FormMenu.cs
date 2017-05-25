@@ -20,22 +20,25 @@ namespace Mafia
     /// </summary>
     public partial class FormMenu : Form
     {
-        private Thread _clientThread;
-        /// <summary>
-        /// Клиент.
-        /// </summary>
-        Client.Client _client = new Client.Client();
-
         public FormMenu()
         {
             InitializeComponent();
             buttoexit.BackColor = Color.Transparent;
             buttonabout.BackColor = Color.Transparent;
             buttonstart.BackColor = Color.Transparent;
-
+            
 
         }
-        
+        /// <summary>
+        /// Обработка входящих сообщений.
+        /// </summary>
+        private Thread _clientThread;
+        /// <summary>
+        /// Клиент.
+        /// </summary>
+        public Client.Client _client = new Client.Client();
+
+
         /// <summary>
         /// Выход из игры
         /// </summary>
@@ -131,8 +134,10 @@ namespace Mafia
                 message = _str.Append(Encoding.ASCII.GetString(answer, 0, bytes)).ToString();
                 if (message == "new")
                 {
-                 //
+                    //
                 }
+                if (message.Substring(0, 1).Equals("N|"))
+                    //Lead.AddToList(message.Substring(2));
                 if (message == "mafiaturn")
                 {
                     //
@@ -153,7 +158,9 @@ namespace Mafia
             while (_client._socket.Available > 0);
         }
 
-       
-
+        private void FormMenu_Load(object sender, EventArgs e)
+        {
+            pnlGame.Hide();
+        }
     }
 }

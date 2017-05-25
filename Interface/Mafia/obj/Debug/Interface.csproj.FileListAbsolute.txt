@@ -35,3 +35,5 @@ G:\MafiaHelper\Interface\Mafia\obj\Debug\Mafia.Lead.resources
 G:\MafiaHelper\Interface\Mafia\obj\Debug\Mafia.Play.resources
 G:\MafiaHelper\Interface\Mafia\obj\Debug\Mafia.Properties.Resources.resources
 G:\MafiaHelper\Interface\Mafia\obj\Debug\Interface.csproj.GenerateResource.Cache
+X:\Program Files (x86)\C#\MafiaHelper\Interface\Mafia\bin\Debug\ClassLibrary.dll
+X:\Program Files (x86)\C#\MafiaHelper\Interface\Mafia\bin\Debug\ClassLibrary.pdb
