@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{28565019-2699-4A08-AEC1-A563C8BEC56D}</ProjectGuid>
+    <ProjectGuid>{8C2F710B-DD6B-4E55-97CA-3B9EC6547D62}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Mafia</RootNamespace>
@@ -58,6 +58,12 @@
     <Compile Include="FormMenu.Designer.cs">
       <DependentUpon>FormMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lead.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lead.Designer.cs">
+      <DependentUpon>Lead.cs</DependentUpon>
+    </Compile>
     <Compile Include="Play.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     <Compile Include="Sound.cs" />
     <EmbeddedResource Include="FormMenu.resx">
       <DependentUpon>FormMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lead.resx">
+      <DependentUpon>Lead.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Play.resx">
       <DependentUpon>Play.cs</DependentUpon>
@@ -105,10 +114,6 @@
   <ItemGroup>
     <Content Include="449714943544734972.ico" />
     <Content Include="carnival-mask-04_pic.ico" />
-    <None Include="Resources\question1.png" />
-    <None Include="Resources\rag-n-bone-man-human_mp3_cc_.wav" />
-    <None Include="Resources\tb_ObQ2v3ww.jpg" />
-    <None Include="Resources\question.png" />
     <None Include="Resources\29438.jpg" />
     <None Include="Resources\449714943544734972.ico" />
     <None Include="Resources\GyMNem8KHsI.jpg" />
@@ -117,7 +122,7 @@
     <None Include="Resources\carnival-mask-04_pic.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\ClassLibrary\ClassLibrary.csproj">
+    <ProjectReference Include="..\..\ClassLibrary\ClassLibrary.csproj">
       <Project>{a7ed4de9-8188-4a63-9ba5-3d9dc0ab1fb1}</Project>
       <Name>ClassLibrary</Name>
     </ProjectReference>

@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="carnival_mask_04_pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\carnival-mask-04_pic.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="carnival_mask_04_pic1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\carnival-mask-04_pic.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -127,16 +130,16 @@
   <data name="GyMNem8KHsI" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GyMNem8KHsI.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="maski_dlya_mafii" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\maski_dlya_mafii.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="twenty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\twenty.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_29438" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\29438.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="_449714943544734972" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\449714943544734972.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="tb_ObQ2v3ww" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tb_ObQ2v3ww.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="question1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\question1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="rag_n_bone_man_human_mp3_cc_" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\rag-n-bone-man-human_mp3_cc_.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

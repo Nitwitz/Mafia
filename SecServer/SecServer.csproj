@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F37A6EDA-CB33-4950-804E-8A83E271B4D2}</ProjectGuid>
+    <ProjectGuid>{32D6BE6D-82D1-442B-AD68-9CDB6B74F7AA}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SecClient</RootNamespace>
-    <AssemblyName>+</AssemblyName>
+    <RootNamespace>SecServer</RootNamespace>
+    <AssemblyName>SecServer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SClient.cs" />
+    <Compile Include="Task.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -55,9 +57,9 @@
       <Project>{a7ed4de9-8188-4a63-9ba5-3d9dc0ab1fb1}</Project>
       <Name>ClassLibrary</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Interface\Mafia\Interface.csproj">
-      <Project>{8c2f710b-dd6b-4e55-97ca-3b9ec6547d62}</Project>
-      <Name>Interface</Name>
+    <ProjectReference Include="..\Log\Log\Log.csproj">
+      <Project>{916549b7-3814-4003-a1c4-434bd4575d8d}</Project>
+      <Name>Log</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
