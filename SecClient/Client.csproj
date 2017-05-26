@@ -55,10 +55,6 @@
       <Project>{a7ed4de9-8188-4a63-9ba5-3d9dc0ab1fb1}</Project>
       <Name>ClassLibrary</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Interface\Mafia\Interface.csproj">
-      <Project>{8c2f710b-dd6b-4e55-97ca-3b9ec6547d62}</Project>
-      <Name>Interface</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

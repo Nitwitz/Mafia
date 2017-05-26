@@ -1,0 +1,5 @@
+X:\Program Files (x86)\C#\MafiaHelper\Log\Log\bin\Release\Log.dll
+X:\Program Files (x86)\C#\MafiaHelper\Log\Log\bin\Release\Log.pdb
+X:\Program Files (x86)\C#\MafiaHelper\Log\Log\obj\Release\Log.csprojResolveAssemblyReference.cache
+X:\Program Files (x86)\C#\MafiaHelper\Log\Log\obj\Release\Log.dll
+X:\Program Files (x86)\C#\MafiaHelper\Log\Log\obj\Release\Log.pdb

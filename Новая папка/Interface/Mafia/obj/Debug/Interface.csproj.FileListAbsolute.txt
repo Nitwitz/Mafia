@@ -1,0 +1,62 @@
+X:\Program Files (x86)\C#\MafiaHelper\Interface\Mafia\bin\Debug\Mafia.exe.config
+X:\Program Files (x86)\C#\MafiaHelper\Interface\Mafia\bin\Debug\Mafia.exe
+X:\Program Files (x86)\C#\MafiaHelper\Interface\Mafia\bin\Debug\Mafia.pdb
+X:\Program Files (x86)\C#\MafiaHelper\Interface\Mafia\obj\Debug\Interface.csprojResolveAssemblyReference.cache
+X:\Program Files (x86)\C#\MafiaHelper\Interface\Mafia\obj\Debug\Mafia.FormMenu.resources
+X:\Program Files (x86)\C#\MafiaHelper\Interface\Mafia\obj\Debug\Mafia.Play.resources
+X:\Program Files (x86)\C#\MafiaHelper\Interface\Mafia\obj\Debug\Mafia.Properties.Resources.resources
+X:\Program Files (x86)\C#\MafiaHelper\Interface\Mafia\obj\Debug\Interface.csproj.GenerateResource.Cache
+X:\Program Files (x86)\C#\MafiaHelper\Interface\Mafia\obj\Debug\Mafia.exe
+X:\Program Files (x86)\C#\MafiaHelper\Interface\Mafia\obj\Debug\Mafia.pdb
+F:\MafiaHelper\Interface\Mafia\bin\Debug\Mafia.exe.config
+F:\MafiaHelper\Interface\Mafia\bin\Debug\Mafia.exe
+F:\MafiaHelper\Interface\Mafia\bin\Debug\Mafia.pdb
+F:\MafiaHelper\Interface\Mafia\obj\Debug\Interface.csprojResolveAssemblyReference.cache
+F:\MafiaHelper\Interface\Mafia\obj\Debug\Mafia.FormMenu.resources
+F:\MafiaHelper\Interface\Mafia\obj\Debug\Mafia.Lead.resources
+F:\MafiaHelper\Interface\Mafia\obj\Debug\Mafia.Play.resources
+F:\MafiaHelper\Interface\Mafia\obj\Debug\Mafia.Properties.Resources.resources
+F:\MafiaHelper\Interface\Mafia\obj\Debug\Interface.csproj.GenerateResource.Cache
+F:\MafiaHelper\Interface\Mafia\obj\Debug\Mafia.exe
+F:\MafiaHelper\Interface\Mafia\obj\Debug\Mafia.pdb
+F:\MafiaHelper\Interface\Mafia\bin\Debug\ClassLibrary.dll
+F:\MafiaHelper\Interface\Mafia\bin\Debug\ClassLibrary.pdb
+G:\MafiaHelper\Interface\Mafia\bin\Debug\Mafia.exe.config
+G:\MafiaHelper\Interface\Mafia\obj\Debug\Mafia.exe
+G:\MafiaHelper\Interface\Mafia\obj\Debug\Mafia.pdb
+G:\MafiaHelper\Interface\Mafia\bin\Debug\Mafia.exe
+G:\MafiaHelper\Interface\Mafia\bin\Debug\Mafia.pdb
+G:\MafiaHelper\Interface\Mafia\bin\Debug\ClassLibrary.dll
+G:\MafiaHelper\Interface\Mafia\bin\Debug\ClassLibrary.pdb
+G:\MafiaHelper\Interface\Mafia\obj\Debug\Interface.csprojResolveAssemblyReference.cache
+G:\MafiaHelper\Interface\Mafia\obj\Debug\Mafia.FormMenu.resources
+G:\MafiaHelper\Interface\Mafia\obj\Debug\Mafia.Lead.resources
+G:\MafiaHelper\Interface\Mafia\obj\Debug\Mafia.Play.resources
+G:\MafiaHelper\Interface\Mafia\obj\Debug\Mafia.Properties.Resources.resources
+G:\MafiaHelper\Interface\Mafia\obj\Debug\Interface.csproj.GenerateResource.Cache
+X:\Program Files (x86)\C#\MafiaHelper\Interface\Mafia\bin\Debug\ClassLibrary.dll
+X:\Program Files (x86)\C#\MafiaHelper\Interface\Mafia\bin\Debug\ClassLibrary.pdb
+C:\Users\Екатерина\Desktop\MafiaHelper\Interface\Mafia\bin\Debug\Mafia.exe.config
+C:\Users\Екатерина\Desktop\MafiaHelper\Interface\Mafia\obj\Debug\Mafia.exe
+C:\Users\Екатерина\Desktop\MafiaHelper\Interface\Mafia\obj\Debug\Mafia.pdb
+C:\Users\Екатерина\Desktop\MafiaHelper\Interface\Mafia\bin\Debug\Mafia.exe
+C:\Users\Екатерина\Desktop\MafiaHelper\Interface\Mafia\bin\Debug\Mafia.pdb
+C:\Users\Екатерина\Desktop\MafiaHelper\Interface\Mafia\bin\Debug\ClassLibrary.dll
+C:\Users\Екатерина\Desktop\MafiaHelper\Interface\Mafia\bin\Debug\ClassLibrary.pdb
+C:\Users\Екатерина\Desktop\MafiaHelper\Interface\Mafia\obj\Debug\Interface.csprojResolveAssemblyReference.cache
+C:\Users\Екатерина\Desktop\MafiaHelper\Interface\Mafia\obj\Debug\Mafia.FormMenu.resources
+C:\Users\Екатерина\Desktop\MafiaHelper\Interface\Mafia\obj\Debug\Mafia.Play.resources
+C:\Users\Екатерина\Desktop\MafiaHelper\Interface\Mafia\obj\Debug\Mafia.Properties.Resources.resources
+C:\Users\Екатерина\Desktop\MafiaHelper\Interface\Mafia\obj\Debug\Interface.csproj.GenerateResource.Cache
+X:\Program Files (x86)\C#\MafiaHelper\Новая папка\Interface\Mafia\bin\Debug\Mafia.exe.config
+X:\Program Files (x86)\C#\MafiaHelper\Новая папка\Interface\Mafia\obj\Debug\Mafia.exe
+X:\Program Files (x86)\C#\MafiaHelper\Новая папка\Interface\Mafia\obj\Debug\Mafia.pdb
+X:\Program Files (x86)\C#\MafiaHelper\Новая папка\Interface\Mafia\bin\Debug\Mafia.exe
+X:\Program Files (x86)\C#\MafiaHelper\Новая папка\Interface\Mafia\bin\Debug\Mafia.pdb
+X:\Program Files (x86)\C#\MafiaHelper\Новая папка\Interface\Mafia\bin\Debug\ClassLibrary.dll
+X:\Program Files (x86)\C#\MafiaHelper\Новая папка\Interface\Mafia\bin\Debug\ClassLibrary.pdb
+X:\Program Files (x86)\C#\MafiaHelper\Новая папка\Interface\Mafia\obj\Debug\Interface.csprojResolveAssemblyReference.cache
+X:\Program Files (x86)\C#\MafiaHelper\Новая папка\Interface\Mafia\obj\Debug\Mafia.FormMenu.resources
+X:\Program Files (x86)\C#\MafiaHelper\Новая папка\Interface\Mafia\obj\Debug\Mafia.Play.resources
+X:\Program Files (x86)\C#\MafiaHelper\Новая папка\Interface\Mafia\obj\Debug\Mafia.Properties.Resources.resources
+X:\Program Files (x86)\C#\MafiaHelper\Новая папка\Interface\Mafia\obj\Debug\Interface.csproj.GenerateResource.Cache
