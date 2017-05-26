@@ -10,7 +10,9 @@ namespace ClassLibrary
 {
     public class Turns
     {
+        public static byte _ready = 0;
 
+        
 
         //    /// <summary>
         //    /// Счёт голосов.
@@ -81,34 +83,34 @@ namespace ClassLibrary
 
         //    }
 
-        //    /// <summary>
-        //    /// Назначение игрокам ролей.
-        //    /// </summary>
-        //    /// <param name="clients">Список игроков.</param>
-        //    public static void Cast(List<Client> clients)
+        ///// <summary>
+        ///// Назначение игрокам ролей.
+        ///// </summary>
+        ///// <param name="clients">Список игроков.</param>
+        //public static void Cast(List<Client> clients)
+        //{
+        //    byte _cCount = (byte)clients.Count;
+        //    Random _rnd = new Random();
+        //    byte _mafiaIndex = (byte)_rnd.Next(1, _cCount);
+        //    byte _commissarIndex = (byte)_rnd.Next(1, _cCount);
+        //    byte _medicIndex = (byte)_rnd.Next(1, _cCount);
+        //    byte _clientCount = 1;
+        //    foreach (Client client in clients)
         //    {
-        //        byte _cCount = (byte)clients.Count;
-        //        Random _rnd = new Random();
-        //        byte _mafiaIndex = (byte)_rnd.Next(1, _cCount);
-        //        byte _commissarIndex = (byte)_rnd.Next(1, _cCount);
-        //        byte _medicIndex = (byte)_rnd.Next(1, _cCount);
-        //        byte _clientCount = 1;
-        //        foreach (Client client in clients)
-        //        {
-        //            if (_clientCount == _mafiaIndex)
-        //                client.role = Role.Mafia;
-        //            else
-        //                if (_clientCount == _commissarIndex)
-        //                client.role = Role.Commissar;
-        //            else
-        //                if (_clientCount == _medicIndex)
-        //                client.role = Role.Doctor;
-        //            else
-        //                client.role = Role.Civilian;
-        //            _clientCount++;
-        //        }
-
+        //        if (_clientCount == _mafiaIndex)
+        //            client.role = Role.Mafia;
+        //        else
+        //            if (_clientCount == _commissarIndex)
+        //            client.role = Role.Commissar;
+        //        else
+        //            if (_clientCount == _medicIndex)
+        //            client.role = Role.Doctor;
+        //        else
+        //            client.role = Role.Civilian;
+        //        _clientCount++;
         //    }
+
+        //}
 
 
         //    /// <summary>

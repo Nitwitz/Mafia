@@ -7,9 +7,9 @@ using ClassLibrary;
 using System.Net.Sockets;
 
 
-namespace ConsoleServer
-{ 
-    class SClient:TcpClient
+namespace Server
+{
+    public class SClient
     {
         /// <summary>
         /// Имя игрока.
@@ -31,6 +31,21 @@ namespace ConsoleServer
         /// Максимальное число голосов.
         /// </summary>
         public byte voteMax = 0;
+        /// <summary>
+        /// 
+        /// </summary>
+        public TcpClient tcpClient
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public Socket Client
+        {
+            get { return tcpClient.Client; }
 
+        }
     }
 }

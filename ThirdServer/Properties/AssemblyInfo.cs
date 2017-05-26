@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("Dk_Server 2.0")]
+[assembly: AssemblyTitle("ThirdServer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Dk_Server 2.0")]
+[assembly: AssemblyProduct("ThirdServer")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("5f058f55-34b2-4bd2-9c24-7f65fb033a38")]
+[assembly: Guid("a383425a-db43-4002-88aa-e2e72f96a2be")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //
