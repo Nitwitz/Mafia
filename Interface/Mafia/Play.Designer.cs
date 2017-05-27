@@ -43,11 +43,12 @@
             // 
             this.Cansel.BackColor = System.Drawing.Color.White;
             this.Cansel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Cansel.Location = new System.Drawing.Point(3, 442);
+            this.Cansel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Cansel.Location = new System.Drawing.Point(12, 442);
             this.Cansel.Name = "Cansel";
-            this.Cansel.Size = new System.Drawing.Size(75, 23);
+            this.Cansel.Size = new System.Drawing.Size(87, 23);
             this.Cansel.TabIndex = 0;
-            this.Cansel.Text = "Cansel";
+            this.Cansel.Text = "Назад";
             this.Cansel.UseVisualStyleBackColor = false;
             this.Cansel.Click += new System.EventHandler(this.Cansel_Click);
             // 
@@ -73,11 +74,12 @@
             // 
             // Confirm
             // 
+            this.Confirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Confirm.Location = new System.Drawing.Point(12, 175);
             this.Confirm.Name = "Confirm";
             this.Confirm.Size = new System.Drawing.Size(87, 23);
             this.Confirm.TabIndex = 3;
-            this.Confirm.Text = "Confirm";
+            this.Confirm.Text = "Подтвердить";
             this.Confirm.UseVisualStyleBackColor = true;
             this.Confirm.Click += new System.EventHandler(this.Confirm_Click);
             // 
@@ -115,7 +117,7 @@
             // 
             // txtPort
             // 
-            this.txtPort.Location = new System.Drawing.Point(60, 135);
+            this.txtPort.Location = new System.Drawing.Point(60, 136);
             this.txtPort.Name = "txtPort";
             this.txtPort.Size = new System.Drawing.Size(143, 20);
             this.txtPort.TabIndex = 7;

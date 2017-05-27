@@ -81,7 +81,7 @@ namespace Server
                 lock (clients)
                 {
                     clients.Add(_client);
-                  
+                   
                 }
                 Print("Подключился новый клиент: {0}", _client.Client.RemoteEndPoint);
 
@@ -179,10 +179,10 @@ namespace Server
                 Print("++");
                 foreach (SClient _players in clients)
                 {
-                    players.Client.Send(Encoding.Default.GetBytes("hui"));
+                  
                     Print("-");
-                    //client.Client.Send(Encoding.Default.GetBytes("=" + _client.userName));
-                    
+                    players.Client.Send(Encoding.Default.GetBytes("=" + _players.userName));
+
                 }
             }
         }
@@ -262,15 +262,7 @@ namespace Server
 
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="c"></param>
-        /// <param name="m"></param>
-         public static void SendToPlayer (SClient c,string m)
-        {
-            c.Client.Send(Encoding.Default.GetBytes(m));
-        }
+     
 
     }
 }

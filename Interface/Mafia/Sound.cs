@@ -15,7 +15,7 @@ namespace Mafia
         /// <summary>
         /// Экземпляр класса поигрования звука 
         /// </summary>
-        static SoundPlayer _soundfail = new SoundPlayer(Properties.Resources.twenty);
+        static SoundPlayer _soundfail = new SoundPlayer(Properties.Resources.rag_n_bone_man_human_mp3_cc_);
         static bool sound_enabled = true;
         /// <summary>
         /// Включение звука

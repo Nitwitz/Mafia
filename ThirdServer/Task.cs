@@ -7,6 +7,8 @@ using System.Net.Sockets;
 using System.Collections;
 using System.Threading;
 using ClassLibrary;
+
+
 namespace Server
 {
     /// <summary>
@@ -78,6 +80,7 @@ namespace Server
             this.message = message;
         }
 
+        Invoke(new UpdateReceiveDisplayDelegate(UpdateReceiveDisplay),
         /// <summary>
         /// Выполняет задачу, сформированную на основе данных, полученных от клиента.
         /// </summary>
@@ -97,13 +100,12 @@ namespace Server
                 if (Server.Program.Ready(Turns._ready).Equals(true))
                 {
                     Program.Print("Sending");
-                    Server.Program.SendToPlayer(client, "new");
                     Server.Program.SendList();
                     //Server.Program.Cast();
                 }
 
             }
-
+            
             if (/*_start.Equals(true)*/ false)
             {
                 Program.Print("Sending");
@@ -111,6 +113,7 @@ namespace Server
                 //Server.Program.Cast();
                 while (true)
                 {
+                    
                     client.Client.Send(Encoding.Default.GetBytes("mafiaturn"));
                     if (message == "markhasbeenmade")
                     {

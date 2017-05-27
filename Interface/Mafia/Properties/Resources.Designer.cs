@@ -61,32 +61,12 @@ namespace Mafia.Properties {
         }
         
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _29438 {
-            get {
-                object obj = ResourceManager.GetObject("_29438", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Icon, аналогичного (Значок).
         /// </summary>
         internal static System.Drawing.Icon _449714943544734972 {
             get {
                 object obj = ResourceManager.GetObject("_449714943544734972", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap carnival_mask_04_pic {
-            get {
-                object obj = ResourceManager.GetObject("carnival_mask_04_pic", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -123,9 +103,9 @@ namespace Mafia.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap maski_dlya_mafii {
+        internal static System.Drawing.Bitmap question1 {
             get {
-                object obj = ResourceManager.GetObject("maski_dlya_mafii", resourceCulture);
+                object obj = ResourceManager.GetObject("question1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +113,19 @@ namespace Mafia.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
         /// </summary>
-        internal static System.IO.UnmanagedMemoryStream twenty {
+        internal static System.IO.UnmanagedMemoryStream rag_n_bone_man_human_mp3_cc_ {
             get {
-                return ResourceManager.GetStream("twenty", resourceCulture);
+                return ResourceManager.GetStream("rag_n_bone_man_human_mp3_cc_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tb_ObQ2v3ww {
+            get {
+                object obj = ResourceManager.GetObject("tb_ObQ2v3ww", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

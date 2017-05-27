@@ -26,9 +26,14 @@ namespace Mafia
             buttoexit.BackColor = Color.Transparent;
             buttonabout.BackColor = Color.Transparent;
             buttonstart.BackColor = Color.Transparent;
-            
+            btnStart.BackColor = Color.Transparent;
 
         }
+
+        byte[] c_answer = new byte[1024];
+        StringBuilder c_str = new StringBuilder();
+        int c_bytes = 0;
+        string c_message = null;
         /// <summary>
         /// Обработка входящих сообщений.
         /// </summary>
@@ -66,7 +71,7 @@ namespace Mafia
             else
             {
                 Sound.sound_off();
-                boxsound.Text = "Без звука";
+                boxsound.Text = "Нет";
             }
         }
 
@@ -88,10 +93,11 @@ namespace Mafia
                 _client._socket.Connect(play.Address, int.Parse(play.Port));
                 _clientThread = new Thread(new ThreadStart(_clientReaction));
                 _clientThread.Start();
-
-
-                  byte[] data = Encoding.Unicode.GetBytes("#"+_client.userName);
-                 _client._socket.Send(data);
+                byte[] data = Encoding.Default.GetBytes("#" + _client.userName);
+                _client._socket.Send(data);
+               
+               
+                
                 
             }
         }
@@ -102,65 +108,86 @@ namespace Mafia
         /// <param name="e"></param>
         private void buttonabout_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Данное приложение созданно для замены ведущего в игре мафия  ", "Информация о игре", MessageBoxButtons.OK);
-
+            DialogResult result = MessageBox.Show("Данное приложение созданно для замены ведущего в игре мафия  ", "Информация о игре",MessageBoxButtons.OK);
         }
         /// <summary>
-        /// //
+        /// Настройки игры, отправка сообщения серверы о готовности игроков
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnStart_Click(object sender, EventArgs e)
         {
-            Lead lead = new Lead();
-            byte[] data = Encoding.Unicode.GetBytes("*");
-            _client._socket.Send(data);
-            lead.Show();
+            if(boxsound.Text == "Звук")
+            {
+                Sound.Play_fail();    
+            }
+                byte[] data = Encoding.Default.GetBytes("*");
+                _client._socket.Send(data);
+                
+                pnlGame.Show();
+            
         }
 
         private void _clientReaction()
         {
-             /// <summary>
-                /// Буфер для ответа.
-                /// </summary> 
-                byte[] answer = new byte[1024];
-                StringBuilder _str = new StringBuilder();
-                int bytes = 0;
-                string message = null;
+
+            //Буфер для ответа.
+            //    byte[] answer = new byte[1024];
+            //StringBuilder _str = new StringBuilder();
+            //int bytes = 0;
+            //string message = null;
 
             do
             {
-                bytes = _client._socket.Receive(answer, answer.Length, 0);
-                message = _str.Append(Encoding.ASCII.GetString(answer, 0, bytes)).ToString();
-                if (message == "new")
+                c_bytes = _client._socket.Receive(c_answer, c_answer.Length, 0);
+                c_message = c_str.Append(Encoding.Default.GetString(c_answer, 0, c_bytes)).ToString();
+                //ListOfPlayers.Items.AddRange(message.Substring())
+                if (c_message == "new")
                 {
                     //
                 }
-                if (message.Substring(0, 1).Equals("N|"))
-                    //Lead.AddToList(message.Substring(2));
-                if (message == "mafiaturn")
+                if (c_message.Substring(0, 1).Equals("="))
+                {
+                    byte[] data = Encoding.Default.GetBytes("mes");
+                    _client._socket.Send(data);
+                    //ListOfPlayers.Items.Add(c_message.Substring(2));
+                }
+                if (c_message == "mafiaturn")
                 {
                     //
                 }
-                if (message == "medicturn")
+                if (c_message == "medicturn")
                 {
                     //
                 }
-                if (message == "commissarturn")
+                if (c_message == "commissarturn")
                 {
                     //
                 }
-                if (message == "day")
+                if (c_message == "day")
                 {
                     //
                 }
             }
             while (_client._socket.Available > 0);
         }
-
+        /// <summary>
+        /// Отображает кнопку выбора, список игроков, и текущую роль
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FormMenu_Load(object sender, EventArgs e)
         {
             pnlGame.Hide();
+        }
+        /// <summary>
+        /// Правила игры
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnInfo_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(" ", "Правила игры", MessageBoxButtons.OK);
         }
     }
 }
