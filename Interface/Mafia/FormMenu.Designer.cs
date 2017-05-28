@@ -128,7 +128,7 @@
             // 
             this.LbRole.BackColor = System.Drawing.Color.Transparent;
             this.LbRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LbRole.Font = new System.Drawing.Font("Mistral", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LbRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LbRole.ForeColor = System.Drawing.Color.Black;
             this.LbRole.Location = new System.Drawing.Point(16, 17);
             this.LbRole.Name = "LbRole";
@@ -168,6 +168,7 @@
             this.btnOk.TabIndex = 1;
             this.btnOk.Text = "Выбрать";
             this.btnOk.UseVisualStyleBackColor = false;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // FormMenu
             // 

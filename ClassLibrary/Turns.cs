@@ -10,9 +10,15 @@ namespace ClassLibrary
 {
     public class Turns
     {
+        /// <summary>
+        /// Кол-во готовых к игре игроков.
+        /// </summary>
         public static byte _ready = 0;
 
-        
+        /// <summary>
+        /// Кол-во проголосовавших.
+        /// </summary>
+        public static byte _voted = 0;        
 
         //    /// <summary>
         //    /// Счёт голосов.

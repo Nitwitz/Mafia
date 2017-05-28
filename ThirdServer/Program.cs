@@ -186,7 +186,7 @@ namespace Server
                 {
                     Thread.Sleep(200);
                     Print("-");
-                    players.Client.Send(Encoding.Default.GetBytes("=" + _players.userName));
+                    players.Client.Send(Encoding.Default.GetBytes("==" + _players.userName));
 
                 }
             }
@@ -210,24 +210,24 @@ namespace Server
                 if (_clientCount == _mafiaIndex)
                 {
                     client.role = Role.Mafia;
-                    client.Client.Send(Encoding.Default.GetBytes("@mafia"));
+                    client.Client.Send(Encoding.Default.GetBytes("@@mafia"));
                 }
                 else
                     if (_clientCount == _commissarIndex)
                 {
                     client.role = Role.Commissar;
-                    client.Client.Send(Encoding.Default.GetBytes("@commissar"));
+                    client.Client.Send(Encoding.Default.GetBytes("@@commissar"));
                 }
                 else
                     if (_clientCount == _medicIndex)
                 {
                     client.role = Role.Doctor;
-                    client.Client.Send(Encoding.Default.GetBytes("@doctor"));
+                    client.Client.Send(Encoding.Default.GetBytes("@@doctor"));
                 }
                 else
                 {
                     client.role = Role.Civilian;
-                    client.Client.Send(Encoding.Default.GetBytes("@civilian"));
+                    client.Client.Send(Encoding.Default.GetBytes("@@civilian"));
                 }
                 _clientCount++;
             }
@@ -316,6 +316,11 @@ namespace Server
                         _client.Client.Send(Encoding.Default.GetBytes("db"+client.userName));
                     client.Client.Disconnect(false);
                     break;
+                }
+                else
+                {
+                    foreach (SClient _client in clients)
+                        _client.Client.Send(Encoding.Default.GetBytes("dbno"));
                 }
             }
         }
