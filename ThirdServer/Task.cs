@@ -16,10 +16,9 @@ namespace Server
     /// </summary>
     public class Task
     {
-        ///// <summary>
-        ///// Кол-во готовых к игре игроков.
-        ///// </summary>
-        //public byte _ready;
+
+        static object locker = new object();
+
 
         /// <summary>
         /// Сообщение, полученное от клиента.
@@ -80,93 +79,56 @@ namespace Server
             this.message = message;
         }
 
-        Invoke(new UpdateReceiveDisplayDelegate(UpdateReceiveDisplay),
         /// <summary>
         /// Выполняет задачу, сформированную на основе данных, полученных от клиента.
         /// </summary>
         public void Solve()
         {
-
-            bool _death = false;
-            if (message.IndexOf("#").Equals(0))
+            switch (message.Substring(0,2))
             {
-                client.userName = message.Substring(1);
-                Program.Print(client.userName);
-            }
-            if (message.Equals("*"))
-            {
-                Turns._ready++;
-                Program.Print("op Ready "+Turns._ready.ToString());
-                if (Server.Program.Ready(Turns._ready).Equals(true))
-                {
-                    Program.Print("Sending");
-                    Server.Program.SendList();
-                    //Server.Program.Cast();
-                }
+                case "##":
+                    client.userName = message.Substring(1);
+                    Program.Print(client.userName);
+                    break;
 
-            }
-            
-            if (/*_start.Equals(true)*/ false)
-            {
-                Program.Print("Sending");
-                Server.Program.SendList();
-                //Server.Program.Cast();
-                while (true)
-                {
-                    
-                    client.Client.Send(Encoding.Default.GetBytes("mafiaturn"));
-                    if (message == "markhasbeenmade")
+                case "**":
+                    Turns._ready++;
+                    Program.Print("op Ready " + Turns._ready.ToString());
+                    if (Server.Program.Ready(Turns._ready).Equals(true))
                     {
-                        //запомнить помеченного клиента.
-                        client.Client.Send(Encoding.Default.GetBytes("medicturn"));
+                        Program.Print("Sending");
+                        Server.Program.SendList();
+                        Thread.Sleep(2000);
+                        Server.Program.Cast();
+                        Thread.Sleep(6000);
+                        client.Client.Send(Encoding.Default.GetBytes("mt"));
                     }
+                    break;
+                case "mm":
+                    Server.Program.MarkM(message.Substring(2));
+                    Thread.Sleep(2000);
+                    client.Client.Send(Encoding.Default.GetBytes("dt"));
+                    break;
 
-                    if (message == "heal")
-                    {
-                        //снять метку с клиента если она на нём есть.
-                        client.Client.Send(Encoding.Default.GetBytes("commissarturn"));
-                    }
-
-                    if (message == "chek")
-                    {
-                        //Сообщить комиссару мафия ли указанный игрок.
-                        client.Client.Send(Encoding.Default.GetBytes("day"));
-                    }
-                    if (message == "chekme")
-                    {
-                        //проверяется есть ли метка, если есть, то клиент отсоединяется
-                        /*_death = true;*/
-                    }
-                    if (_death == true)
-                    {
-                        //метод кторые оповещает каждого клиента о результатах хода, а так же отправляе всем клиентам сообщение о начале голосования.
-                        _death = false;
-                    }
-                    else
-                    {
-                        //метод который оповещает всех о результатах хода, а так же отправляе всем клиентам сообщение о начале голосования.
-                    }
-                    if (message.IndexOf("|") == 0)
-                    {
-                        //Считывается имя клиента после | и этому клиенту начисляется голос.
-                    }
-                    if (/*Все проголосовали*/false)
-                    {
-                        /*Метод считающий голоса*/
-                        //ОТсоединяется от сервера игрок и всем рассылается сообщение об этом.
-                        if (/**Проверка состояния партии*/true)
-                        {
-                            //Если игра окончена каким-либо рузультатом, то игра заканчивается.
-                        }
-                        else
-                        {
-                            client.Client.Send(Encoding.Default.GetBytes("mafiaturn"));
-                        }
-                    }
-                }
+                case "hm":
+                    Server.Program.Heal(message.Substring(2));
+                    Thread.Sleep(2000);
+                    client.Client.Send(Encoding.Default.GetBytes("ct"));
+                    break;
+                case "cc":
+                    Server.Program.CommisarChek(message.Substring(2));
+                    Thread.Sleep(6000);
+                    Server.Program.DayBeginning();
+                    break;
+                case "vv":
+                    Server.Program.Vote(message.Substring(2));
+                    if (Server.Program.AllVoted(Turns._voted).Equals(true))
+                        Server.Program.Voting();
+                    Thread.Sleep(6000);
+                    Server.Program.Check();
+                    break;
             }
-            Program.Print("Клиент {0} прислал сообщение: >{1}<", client.Client.RemoteEndPoint, message);
+                Program.Print("Клиент {0} прислал сообщение: >{1}<", client.Client.RemoteEndPoint, message);
         }
-
     }
 }

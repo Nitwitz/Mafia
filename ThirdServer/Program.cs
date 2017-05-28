@@ -48,6 +48,7 @@ namespace Server
         //private static ILog _log = new FileLog("X:\\123.txt");
 
 
+        static object locker = new object();
 
         static void Main(string[] args)
         {
@@ -124,12 +125,15 @@ namespace Server
         /// </summary>
         private static void receive()
         {
-            SClient _client;
-            byte[] _buff;
-            string _mess = string.Empty;
-            while (true)
+            lock (locker)
             {
-                
+              SClient _client;
+              byte[] _buff;
+              string _mess = string.Empty;
+            
+                while (true)
+                {
+
                     for (int i = 0; i < clients.Count; i++)
                     {
                         _client = clients[i];
@@ -146,6 +150,7 @@ namespace Server
                         catch { }
                     }
                     Thread.Sleep(10);
+                }
             }
         }
 
@@ -159,7 +164,6 @@ namespace Server
             {
                 Print("true");
                 return true;
-
             }
             else
             {
@@ -173,13 +177,14 @@ namespace Server
         /// </summary>
         public static void SendList()
         {
+          
             Print("+");
             foreach (SClient players in clients)
             {
                 Print("++");
                 foreach (SClient _players in clients)
                 {
-                  
+                    Thread.Sleep(200);
                     Print("-");
                     players.Client.Send(Encoding.Default.GetBytes("=" + _players.userName));
 
@@ -231,7 +236,7 @@ namespace Server
         /// <summary>
         /// Проверка состояния партии.
         /// </summary>
-        public static void Check(bool _end)
+        public static void Check()
         {
             byte _civCount = 0;
             bool _mafiaEx = false;
@@ -241,28 +246,139 @@ namespace Server
                     _mafiaEx = true;
                 if (client.role == Role.Civilian || client.role == Role.Commissar || client.role == Role.Doctor)
                     _civCount++;
-                if (_mafiaEx == true)
+            }
+            if (_mafiaEx == true)
+            {
+                if (_civCount <= 2)
                 {
-                    if (_civCount <= 2)
-                    {
-                        client.Client.Send(Encoding.Default.GetBytes("mafiawin"));
-                        _end = true;
-                    }
-                    else
-                    {
-                        _end = false;
-                    }
+                    foreach (SClient client in clients)
+                        client.Client.Send(Encoding.Default.GetBytes("mw"));
                 }
                 else
                 {
-                    client.Client.Send(Encoding.Default.GetBytes("civilianswin"));
-                    _end = true;
+                    foreach (SClient client in clients)
+                        client.Client.Send(Encoding.Default.GetBytes("mt"));
                 }
             }
-
+            else
+            {
+                foreach (SClient client in clients)
+                    client.Client.Send(Encoding.Default.GetBytes("cw"));
+            }
         }
 
-     
+        /// <summary>
+        /// Запоминание клиента на которого пал выбор Мафии.
+        /// </summary>
+        /// <param -name="_name">Имя клиента на которого пал выбор мафии.</param>
+        public static void MarkM(string _name)
+        {
+            foreach (SClient client in clients)
+                if (_name.Equals(client.userName))
+                    client.mark = true;
+        }
 
+        /// <summary>
+        /// Лечение выбранного Доктором игрока.
+        /// </summary>
+        /// <param name="_name">имя выбранного для лечения игрока.</param>
+        public static void Heal(string _name)
+        {
+            foreach (SClient client in clients)
+                if (_name.Equals(client.userName))
+                    client.mark = false;
+        }
+
+        /// <summary>
+        /// Проверка указанного Коммисаром игрока. 
+        /// </summary>
+        /// <param name="_name">Имя выбранного Коммисаром игрока.</param>
+        public static void CommisarChek(string _name)
+        {
+            foreach (SClient client in clients)
+                if (_name.Equals(client.userName) & client.role.Equals(Role.Mafia))
+                    client.Client.Send(Encoding.Default.GetBytes("ym"));
+
+                else
+                    client.Client.Send(Encoding.Default.GetBytes("nm"));
+        }
+
+        /// <summary>
+        /// Наступление дня. Проверка на налдичие мёртвых.
+        /// </summary>
+        public static void DayBeginning()
+        {
+            foreach (SClient client in clients)
+            {
+                if (client.mark == true)
+                {
+                    foreach (SClient _client in clients)
+                        _client.Client.Send(Encoding.Default.GetBytes("db"+client.userName));
+                    client.Client.Disconnect(false);
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Начисление голосов.
+        /// </summary>
+        /// <param name="_name">Имя игрока против которого голосуют.</param>
+        public static void Vote(string _name)
+        {
+            foreach (SClient client in clients)
+                if (_name.Equals(client.userName))
+                {
+                    client.voteCount++;
+                    Turns._voted++;
+                }
+        }
+
+       /// <summary>
+       /// Проверка, все ли игроки проголосовали.
+       /// </summary>
+       /// <param name="voted">Кол-во проголосовавших игроков.</param>
+       /// <returns>Готовность всех игроков.</returns>
+        public static bool AllVoted(byte voted)
+        {
+            if (voted == clients.Count)
+                return true;
+            else
+                return false;
+        }
+
+       /// <summary>
+       /// Определение максимального числа голосов.
+       /// </summary>
+       /// <returns>Максимальное число голосов.</returns>
+            public static byte MaxVotes()
+        {
+            byte max = 0;
+            foreach (SClient client in clients)
+            {
+                if (client.voteCount > max)
+                    max = client.voteCount;
+            }
+            return (max);
+        }
+
+        /// <summary>
+        /// Голосование.
+        /// </summary>
+        public static void Voting()
+        {
+            foreach (SClient client in clients)
+            {
+                if (client.voteCount == MaxVotes())
+                {
+                    foreach (SClient _client in clients)
+                        _client.Client.Send(Encoding.Default.GetBytes("ve" + client.userName));
+                    client.Client.Disconnect(false);
+                    break;
+                }
+            }
+        }
+
+        
     }
 }
