@@ -84,10 +84,10 @@ namespace Server
         /// </summary>
         public void Solve()
         {
-            switch (message.Substring(0,2))
+            switch (message.Substring(0, 2))
             {
                 case "##":
-                    client.userName = message.Substring(1);
+                    client.userName = message.Substring(2);
                     Program.Print(client.userName);
                     break;
 
@@ -98,9 +98,9 @@ namespace Server
                     {
                         Program.Print("Sending");
                         Server.Program.SendList();
-                        Thread.Sleep(2000);
-                        Server.Program.Cast();
                         Thread.Sleep(6000);
+                        Server.Program.Cast();
+                        Thread.Sleep(10000);
                         client.Client.Send(Encoding.Default.GetBytes("mt"));
                     }
                     break;
@@ -128,7 +128,7 @@ namespace Server
                     Server.Program.Check();
                     break;
             }
-                Program.Print("Клиент {0} прислал сообщение: >{1}<", client.Client.RemoteEndPoint, message);
+            Program.Print("Клиент {0} прислал сообщение: >{1}<", client.Client.RemoteEndPoint, message);
         }
     }
 }

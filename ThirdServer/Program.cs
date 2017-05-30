@@ -54,7 +54,7 @@ namespace Server
         {
             //string[] _args = (string[])args;
             IPAddress _ip = IPAddress.Parse("127.0.0.1");
-            IPEndPoint _ipep = new IPEndPoint(_ip, 1000);
+            IPEndPoint _ipep = new IPEndPoint(_ip, 1100);
             //_log.WriteEntry("MyServer", "Сервер запускается.", LogEventType.Info);
             tcpServer = new TcpListener(_ipep);
             tcpServer.Start();
@@ -82,7 +82,7 @@ namespace Server
                 lock (clients)
                 {
                     clients.Add(_client);
-                   
+
                 }
                 Print("Подключился новый клиент: {0}", _client.Client.RemoteEndPoint);
 
@@ -127,10 +127,10 @@ namespace Server
         {
             lock (locker)
             {
-              SClient _client;
-              byte[] _buff;
-              string _mess = string.Empty;
-            
+                SClient _client;
+                byte[] _buff;
+                string _mess = string.Empty;
+
                 while (true)
                 {
 
@@ -177,7 +177,7 @@ namespace Server
         /// </summary>
         public static void SendList()
         {
-          
+
             Print("+");
             foreach (SClient players in clients)
             {
@@ -187,12 +187,11 @@ namespace Server
                     Thread.Sleep(200);
                     Print("-");
                     players.Client.Send(Encoding.Default.GetBytes("==" + _players.userName));
-
                 }
             }
         }
 
-       
+
         /// <summary>
         /// Назначение игрокам ролей.
         /// </summary>
@@ -313,7 +312,7 @@ namespace Server
                 if (client.mark == true)
                 {
                     foreach (SClient _client in clients)
-                        _client.Client.Send(Encoding.Default.GetBytes("db"+client.userName));
+                        _client.Client.Send(Encoding.Default.GetBytes("db" + client.userName));
                     client.Client.Disconnect(false);
                     break;
                 }
@@ -339,11 +338,11 @@ namespace Server
                 }
         }
 
-       /// <summary>
-       /// Проверка, все ли игроки проголосовали.
-       /// </summary>
-       /// <param name="voted">Кол-во проголосовавших игроков.</param>
-       /// <returns>Готовность всех игроков.</returns>
+        /// <summary>
+        /// Проверка, все ли игроки проголосовали.
+        /// </summary>
+        /// <param name="voted">Кол-во проголосовавших игроков.</param>
+        /// <returns>Готовность всех игроков.</returns>
         public static bool AllVoted(byte voted)
         {
             if (voted == clients.Count)
@@ -352,11 +351,11 @@ namespace Server
                 return false;
         }
 
-       /// <summary>
-       /// Определение максимального числа голосов.
-       /// </summary>
-       /// <returns>Максимальное число голосов.</returns>
-            public static byte MaxVotes()
+        /// <summary>
+        /// Определение максимального числа голосов.
+        /// </summary>
+        /// <returns>Максимальное число голосов.</returns>
+        public static byte MaxVotes()
         {
             byte max = 0;
             foreach (SClient client in clients)
@@ -384,6 +383,6 @@ namespace Server
             }
         }
 
-        
+
     }
 }
