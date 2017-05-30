@@ -14,8 +14,6 @@ using ClassLibrary;
 
 namespace Mafia
 {
-    
-
     /// <summary>
     /// Меню, окрывается при запуске
     /// </summary>
@@ -34,8 +32,8 @@ namespace Mafia
 
         Status status = new Status();
 
-        byte[] c_answer = new byte[1024];
-        StringBuilder c_str = new StringBuilder();
+
+
         int c_bytes = 0;
         string c_message = null;
         /// <summary>
@@ -70,7 +68,6 @@ namespace Mafia
             {
                 Sound.sound_on();
                 boxsound.Text = "Звук";
-
             }
             else
             {
@@ -79,7 +76,7 @@ namespace Mafia
             }
         }
 
-       
+
 
         /// <summary>
         /// Кнопка запуска игры
@@ -88,7 +85,6 @@ namespace Mafia
         /// <param name="e"></param>
         private void buttonstart_Click(object sender, EventArgs e)
         {
-
             Play play = new Play();
             if (play.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -97,12 +93,8 @@ namespace Mafia
                 _client._socket.Connect(play.Address, int.Parse(play.Port));
                 _clientThread = new Thread(new ThreadStart(_clientReaction));
                 _clientThread.Start();
-                byte[] data = Encoding.Default.GetBytes("#" + _client.userName);
+                byte[] data = Encoding.Default.GetBytes("##" + _client.userName);
                 _client._socket.Send(data);
-               
-               
-                
-                
             }
         }
         /// <summary>
@@ -112,7 +104,7 @@ namespace Mafia
         /// <param name="e"></param>
         private void buttonabout_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Данное приложение созданно для замены ведущего в игре мафия  ", "Информация о игре",MessageBoxButtons.OK);
+            DialogResult result = MessageBox.Show("Данное приложение созданно для замены ведущего в игре мафия  ", "Информация о игре", MessageBoxButtons.OK);
         }
         /// <summary>
         /// Настройки игры, отправка сообщения серверы о готовности игроков
@@ -121,103 +113,120 @@ namespace Mafia
         /// <param name="e"></param>
         private void btnStart_Click(object sender, EventArgs e)
         {
-            if(boxsound.Text == "Звук")
+            if (boxsound.Text == "Звук")
             {
-                Sound.Play_fail();    
+                Sound.Play_fail();
             }
-                byte[] data = Encoding.Default.GetBytes("**");
-                _client._socket.Send(data);
-                
-                pnlGame.Show();
-            
+            byte[] data = Encoding.Default.GetBytes("**");
+            _client._socket.Send(data);
+
+            pnlGame.Show();
+
         }
 
         private void _clientReaction()
         {
+            byte[] c_answer = new byte[1024];
             //Буфер для ответа.
             //    byte[] answer = new byte[1024];
             //StringBuilder _str = new StringBuilder();
             //int bytes = 0;
             //string message = null;
-            lock (locker)
+            while (true)
             {
-                do
+                if (_client._socket.Available == 0)
                 {
-                    c_bytes = _client._socket.Receive(c_answer, c_answer.Length, 0);
-                    c_message = c_str.Append(Encoding.Default.GetString(c_answer, 0, c_bytes)).ToString();
-                    //ListOfPlayers.Items.AddRange(message.Substring())
-                    switch(c_message.Substring(0,2))
-                    {
-                        case "==":
-                            ListOfPlayers.Items.Add(c_message.Substring(2));
-                            break;
-                        case "@@":
-                            if (c_message.Substring(2).Equals("mafia"))
-                                _client.role = Role.Mafia;
-                            if (c_message.Substring(2).Equals("commissar"))
-                                _client.role = Role.Commissar;
-                            if (c_message.Substring(2).Equals("doctor"))
-                                _client.role = Role.Doctor;
-                            if (c_message.Substring(2).Equals("civilian"))
-                                _client.role = Role.Civilian;
-                            break;
-                        case "mt":
-                            status = Status.MafiaTurn;
-                            btnOk.Visible = false;
-                            if (_client.role.Equals(Role.Mafia))
-                                btnOk.Visible = true;
-                            break;
-                        case "dt":
-                            status = Status.DoctorTurn;
-                            btnOk.Visible = false;
-                            if (_client.role.Equals(Role.Doctor))
-                                btnOk.Visible = true;
-                            break;
-                        case "ct":
-                            status = Status.CommissarTurn;
-                            btnOk.Visible = false;
-                            if (_client.role.Equals(Role.Commissar))
-                                btnOk.Visible = true;
-                            break;
-                        case "ym":
-                            if (_client.role.Equals(Role.Commissar))
-                                MessageBox.Show("Игрок " + c_message.Substring(2) + " ЯВЛЯЕТСЯ Мафией!");
-                            break;
-                        case "nm":
-                            if (_client.role.Equals(Role.Commissar))
-                                MessageBox.Show("Игрок " + c_message.Substring(2) + " НЕ Мафиея.");
-                            break;
-                        case "db":
-                            if (c_message.Substring(2).Equals("no"))
-                            {
-                                status = Status.Day;
-                                MessageBox.Show("Наступил день. Пострадавших НЕТ. Доктор отлично справляется со своей работой.  Приступай к голосованию.");
-                                btnOk.Visible = true;
-                            }
-                            else
-                            {
-                                status = Status.Day;
-                                MessageBox.Show("Наступил день. Игрок " + c_message.Substring(2) + " мёртв! Приступай к голосованию.");
-                                btnOk.Visible = true;
-                            }
-                            break;
-                        case "ve":
-                            MessageBox.Show("По результатам голосования выбывает игрок: " + c_message.Substring(2));
-                            break;
-                        case "mw":
-                            MessageBox.Show("Победу одержал Мафия! Конец игры!");
-                            Thread.Sleep(6000);
-                            _client._socket.Disconnect(false);
-                            break;
-                        case "cw":
-                            MessageBox.Show("Победу одержали Мирные Жители! Конец игры!");
-                            Thread.Sleep(6000);
-                            _client._socket.Disconnect(false);
-                            break;
-                    }
+                    Thread.Sleep(10);
+                    continue;
                 }
-                while (_client._socket.Available > 0);
+                c_bytes = _client._socket.Receive(c_answer);
+                c_message = Encoding.Default.GetString(c_answer, 0, c_bytes).Replace("\0", "");
+                //ListOfPlayers.Items.AddRange(message.Substring())
+                if (c_message.Equals(string.Empty))
+                    continue;
+                switch (c_message.Substring(0, 2))
+                {
+                    case "==":
+                        AddToPlayersList(c_message.Substring(2));
+                        break;
+                    case "@@":
+                        if (c_message.Substring(2).Equals("mafia"))
+                            _client.role = Role.Mafia;
+                        if (c_message.Substring(2).Equals("commissar"))
+                            _client.role = Role.Commissar;
+                        if (c_message.Substring(2).Equals("doctor"))
+                            _client.role = Role.Doctor;
+                        if (c_message.Substring(2).Equals("civilian"))
+                            _client.role = Role.Civilian;
+                        break;
+                    case "mt":
+                        status = Status.MafiaTurn;
+                        btnOk.Visible = false;
+                        if (_client.role.Equals(Role.Mafia))
+                            btnOk.Visible = true;
+                        break;
+                    case "dt":
+                        status = Status.DoctorTurn;
+                        btnOk.Visible = false;
+                        if (_client.role.Equals(Role.Doctor))
+                            btnOk.Visible = true;
+                        break;
+                    case "ct":
+                        status = Status.CommissarTurn;
+                        btnOk.Visible = false;
+                        if (_client.role.Equals(Role.Commissar))
+                            btnOk.Visible = true;
+                        break;
+                    case "ym":
+                        if (_client.role.Equals(Role.Commissar))
+                            MessageBox.Show("Игрок " + c_message.Substring(2) + " ЯВЛЯЕТСЯ Мафией!");
+                        break;
+                    case "nm":
+                        if (_client.role.Equals(Role.Commissar))
+                            MessageBox.Show("Игрок " + c_message.Substring(2) + " НЕ Мафиея.");
+                        break;
+                    case "db":
+                        if (c_message.Substring(2).Equals("no"))
+                        {
+                            status = Status.Day;
+                            MessageBox.Show("Наступил день. Пострадавших НЕТ. Доктор отлично справляется со своей работой.  Приступай к голосованию.");
+                            btnOk.Visible = true;
+                        }
+                        else
+                        {
+                            status = Status.Day;
+                            MessageBox.Show("Наступил день. Игрок " + c_message.Substring(2) + " мёртв! Приступай к голосованию.");
+                            btnOk.Visible = true;
+                        }
+                        break;
+                    case "ve":
+                        MessageBox.Show("По результатам голосования выбывает игрок: " + c_message.Substring(2));
+                        break;
+                    case "mw":
+                        MessageBox.Show("Победу одержал Мафия! Конец игры!");
+                        Thread.Sleep(6000);
+                        _client._socket.Disconnect(false);
+                        break;
+                    case "cw":
+                        MessageBox.Show("Победу одержали Мирные Жители! Конец игры!");
+                        Thread.Sleep(6000);
+                        _client._socket.Disconnect(false);
+                        break;
+                }
             }
+
+        }
+
+        private delegate void AddToPlayersListDelegate(string _name);
+
+        private void AddToPlayersList(string _name)
+        {
+            if (ListOfPlayers.InvokeRequired)
+            {
+                ListOfPlayers.Invoke((AddToPlayersListDelegate)AddToPlayersList, _name);
+                return;
+            }
+            ListOfPlayers.Items.Add(_name);
         }
         /// <summary>
         /// Отображает кнопку выбора, список игроков, и текущую роль
@@ -253,7 +262,7 @@ namespace Mafia
                     _client._socket.Send(data);
                     break;
                 case Status.DoctorTurn:
-                     data = Encoding.Default.GetBytes("hm" + ListOfPlayers.SelectedItem);
+                    data = Encoding.Default.GetBytes("hm" + ListOfPlayers.SelectedItem);
                     _client._socket.Send(data);
                     break;
                 case Status.CommissarTurn:
