@@ -47,7 +47,7 @@
             this.Cansel.Location = new System.Drawing.Point(12, 442);
             this.Cansel.Name = "Cansel";
             this.Cansel.Size = new System.Drawing.Size(87, 23);
-            this.Cansel.TabIndex = 0;
+            this.Cansel.TabIndex = 7;
             this.Cansel.Text = "Назад";
             this.Cansel.UseVisualStyleBackColor = false;
             this.Cansel.Click += new System.EventHandler(this.Cansel_Click);
@@ -60,7 +60,7 @@
             this.EnterName.Location = new System.Drawing.Point(55, 9);
             this.EnterName.Name = "EnterName";
             this.EnterName.Size = new System.Drawing.Size(159, 24);
-            this.EnterName.TabIndex = 1;
+            this.EnterName.TabIndex = 0;
             this.EnterName.Text = "Введите Имя:";
             this.EnterName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -68,8 +68,8 @@
             // 
             this.txtName.Location = new System.Drawing.Point(60, 36);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(143, 20);
-            this.txtName.TabIndex = 2;
+            this.txtName.Size = new System.Drawing.Size(143, 22);
+            this.txtName.TabIndex = 1;
             this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Confirm
@@ -78,7 +78,7 @@
             this.Confirm.Location = new System.Drawing.Point(12, 175);
             this.Confirm.Name = "Confirm";
             this.Confirm.Size = new System.Drawing.Size(87, 23);
-            this.Confirm.TabIndex = 3;
+            this.Confirm.TabIndex = 6;
             this.Confirm.Text = "Подтвердить";
             this.Confirm.UseVisualStyleBackColor = true;
             this.Confirm.Click += new System.EventHandler(this.Confirm_Click);
@@ -91,7 +91,7 @@
             this.EnterAdress.Location = new System.Drawing.Point(55, 59);
             this.EnterAdress.Name = "EnterAdress";
             this.EnterAdress.Size = new System.Drawing.Size(159, 24);
-            this.EnterAdress.TabIndex = 4;
+            this.EnterAdress.TabIndex = 2;
             this.EnterAdress.Text = "Введите Адресс:";
             this.EnterAdress.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -99,8 +99,9 @@
             // 
             this.txtAdress.Location = new System.Drawing.Point(60, 86);
             this.txtAdress.Name = "txtAdress";
-            this.txtAdress.Size = new System.Drawing.Size(143, 20);
-            this.txtAdress.TabIndex = 5;
+            this.txtAdress.Size = new System.Drawing.Size(143, 22);
+            this.txtAdress.TabIndex = 3;
+            this.txtAdress.Text = "127.0.0.1";
             this.txtAdress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // EnterPort
@@ -111,7 +112,7 @@
             this.EnterPort.Location = new System.Drawing.Point(55, 109);
             this.EnterPort.Name = "EnterPort";
             this.EnterPort.Size = new System.Drawing.Size(159, 24);
-            this.EnterPort.TabIndex = 6;
+            this.EnterPort.TabIndex = 4;
             this.EnterPort.Text = "Введите Порт:";
             this.EnterPort.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -119,8 +120,9 @@
             // 
             this.txtPort.Location = new System.Drawing.Point(60, 136);
             this.txtPort.Name = "txtPort";
-            this.txtPort.Size = new System.Drawing.Size(143, 20);
-            this.txtPort.TabIndex = 7;
+            this.txtPort.Size = new System.Drawing.Size(143, 22);
+            this.txtPort.TabIndex = 5;
+            this.txtPort.Text = "1100";
             this.txtPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Play

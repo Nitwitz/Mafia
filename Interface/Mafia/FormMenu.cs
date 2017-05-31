@@ -89,6 +89,7 @@ namespace Mafia
             if (play.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 _client.userName = play.UserName;
+                LbName.Text = _client.userName;
                 _client._socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 _client._socket.Connect(play.Address, int.Parse(play.Port));
                 _clientThread = new Thread(new ThreadStart(_clientReaction));

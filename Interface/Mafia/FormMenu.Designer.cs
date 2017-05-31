@@ -35,7 +35,7 @@
             this.buttonabout = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
             this.pnlGame = new System.Windows.Forms.Panel();
-            this.LbRole = new System.Windows.Forms.Label();
+            this.LbName = new System.Windows.Forms.Label();
             this.btnInfo = new System.Windows.Forms.Button();
             this.ListOfPlayers = new System.Windows.Forms.ListBox();
             this.btnOk = new System.Windows.Forms.Button();
@@ -114,7 +114,7 @@
             // 
             this.pnlGame.BackColor = System.Drawing.Color.Red;
             this.pnlGame.BackgroundImage = global::Mafia.Properties.Resources.GyMNem8KHsI;
-            this.pnlGame.Controls.Add(this.LbRole);
+            this.pnlGame.Controls.Add(this.LbName);
             this.pnlGame.Controls.Add(this.btnInfo);
             this.pnlGame.Controls.Add(this.ListOfPlayers);
             this.pnlGame.Controls.Add(this.btnOk);
@@ -124,17 +124,17 @@
             this.pnlGame.Size = new System.Drawing.Size(270, 448);
             this.pnlGame.TabIndex = 7;
             // 
-            // LbRole
+            // LbName
             // 
-            this.LbRole.BackColor = System.Drawing.Color.Transparent;
-            this.LbRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LbRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LbRole.ForeColor = System.Drawing.Color.Black;
-            this.LbRole.Location = new System.Drawing.Point(16, 17);
-            this.LbRole.Name = "LbRole";
-            this.LbRole.Size = new System.Drawing.Size(102, 34);
-            this.LbRole.TabIndex = 3;
-            this.LbRole.Text = "Ваша Роль";
+            this.LbName.BackColor = System.Drawing.Color.Transparent;
+            this.LbName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LbName.ForeColor = System.Drawing.Color.Black;
+            this.LbName.Location = new System.Drawing.Point(16, 17);
+            this.LbName.Name = "LbName";
+            this.LbName.Size = new System.Drawing.Size(102, 34);
+            this.LbName.TabIndex = 3;
+            this.LbName.Text = "Ваша Роль";
             // 
             // btnInfo
             // 
@@ -209,7 +209,7 @@
         private System.Windows.Forms.Panel pnlGame;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.ListBox ListOfPlayers;
-        private System.Windows.Forms.Label LbRole;
+        private System.Windows.Forms.Label LbName;
         private System.Windows.Forms.Button btnInfo;
     }
 }
