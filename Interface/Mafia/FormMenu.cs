@@ -151,13 +151,25 @@ namespace Mafia
                         break;
                     case "@@":
                         if (c_message.Substring(2).Equals("mafia"))
+                        {
                             _client.role = Role.Mafia;
+                            MessageBox.Show("Вы - Мафийя!");
+                        }
                         if (c_message.Substring(2).Equals("commissar"))
+                        {
                             _client.role = Role.Commissar;
+                            MessageBox.Show("Вы - Комиссар!");
+                        }
                         if (c_message.Substring(2).Equals("doctor"))
+                        {
                             _client.role = Role.Doctor;
+                            MessageBox.Show("Вы - ДОтор!");
+                        }
                         if (c_message.Substring(2).Equals("civilian"))
+                        {
                             _client.role = Role.Civilian;
+                            MessageBox.Show("Вы - МИрный Житель!!");
+                        }
                         break;
                     case "mt":
                         status = Status.MafiaTurn;
@@ -244,7 +256,22 @@ namespace Mafia
         /// <param name="e"></param>
         private void btnInfo_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show(" ", "Правила игры", MessageBoxButtons.OK);
+            switch (_client.role)
+            {
+                case Role.Civilian:
+                    MessageBox.Show("Ж", "Роль", MessageBoxButtons.OK);
+                    break;
+                case Role.Commissar:
+                    MessageBox.Show( "К", "Роль", MessageBoxButtons.OK);
+                    break;
+                case Role.Doctor:
+                    MessageBox.Show( "В", "Роль", MessageBoxButtons.OK);
+                    break;
+                case Role.Mafia:
+                    MessageBox.Show("М", "Роль", MessageBoxButtons.OK);
+                    break;
+
+            }
         }
 
         /// <summary>
