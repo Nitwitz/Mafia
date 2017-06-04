@@ -202,7 +202,11 @@ namespace Server
             Random _rnd = new Random();
             byte _mafiaIndex = (byte)_rnd.Next(1, _cCount);
             byte _commissarIndex = (byte)_rnd.Next(1, _cCount);
+            if(_commissarIndex == _mafiaIndex)
+                _commissarIndex = (byte)_rnd.Next(1, _cCount);
             byte _medicIndex = (byte)_rnd.Next(1, _cCount);
+             if(_medicIndex == _mafiaIndex || _medicIndex== _commissarIndex)
+                _medicIndex = (byte)_rnd.Next(1, _cCount);
             byte _clientCount = 1;
             foreach (SClient client in clients)
             {
@@ -212,7 +216,7 @@ namespace Server
                     client.Client.Send(Encoding.Default.GetBytes("@@mafia"));
                 }
                 else
-                    if (_clientCount == _commissarIndex)
+                    if (_clientCount == _commissarIndex )
                 {
                     client.role = Role.Commissar;
                     client.Client.Send(Encoding.Default.GetBytes("@@commissar"));
@@ -231,6 +235,49 @@ namespace Server
                 _clientCount++;
             }
         }
+
+        //public static void Cast2()
+        //{
+        //    byte[] players = new byte[clients.Count];
+        //    for (byte i = 1; i <= players.Length; i++)
+        //        players[i] = i;
+
+        //    Random rand = new Random();
+        //    for (int i = players.Length - 1; i >= 0; i--)
+        //    {
+        //      byte j = rand.Next(i);
+        //       byte temp = players[i];
+        //        players[i] = players[j];
+        //        players[j] = temp;
+        //    }
+        //    byte _clientCount = 1;
+        //    foreach (SClient client in clients)
+        //    {
+        //        if (_clientCount == 1)
+        //        {
+        //            client.role = Role.Mafia;
+        //            client.Client.Send(Encoding.Default.GetBytes("@@mafia"));
+        //        }
+        //        else
+        //            if (_clientCount == _commissarIndex)
+        //        {
+        //            client.role = Role.Commissar;
+        //            client.Client.Send(Encoding.Default.GetBytes("@@commissar"));
+        //        }
+        //        else
+        //            if (_clientCount == _medicIndex)
+        //        {
+        //            client.role = Role.Doctor;
+        //            client.Client.Send(Encoding.Default.GetBytes("@@doctor"));
+        //        }
+        //        else
+        //        {
+        //            client.role = Role.Civilian;
+        //            client.Client.Send(Encoding.Default.GetBytes("@@civilian"));
+        //        }
+        //        _clientCount++;
+        //    }
+        //}
 
         /// <summary>
         /// Проверка состояния партии.
@@ -295,11 +342,14 @@ namespace Server
         public static void CommisarChek(string _name)
         {
             foreach (SClient client in clients)
-                if (_name.Equals(client.userName) & client.role.Equals(Role.Mafia))
-                    client.Client.Send(Encoding.Default.GetBytes("ym"));
-
+                if (_name.Equals(client.userName) && client.role.Equals(Role.Mafia))
+                    Turns.guessed = true;
+            if (Turns.guessed == true)
+                foreach (SClient client in clients)
+                    client.Client.Send(Encoding.Default.GetBytes("ym"+_name));
                 else
-                    client.Client.Send(Encoding.Default.GetBytes("nm"));
+                foreach (SClient client in clients)
+                    client.Client.Send(Encoding.Default.GetBytes("nm" + _name));
         }
 
         /// <summary>
@@ -320,6 +370,7 @@ namespace Server
                 {
                     foreach (SClient _client in clients)
                         _client.Client.Send(Encoding.Default.GetBytes("dbno"));
+                    break;
                 }
             }
         }
@@ -378,11 +429,56 @@ namespace Server
                     foreach (SClient _client in clients)
                         _client.Client.Send(Encoding.Default.GetBytes("ve" + client.userName));
                     client.Client.Disconnect(false);
+                    Turns._voted = 0;
+                    foreach (SClient _client in clients)
+                        _client.voteCount = 0;
                     break;
                 }
             }
         }
 
+        /// <summary>
+        /// Отправка каждому из клиентов оповещение о начале хода Мафии.
+        /// </summary>
+        public static void SendMT()
+        {
+            foreach (SClient _client in clients)
+                _client.Client.Send(Encoding.Default.GetBytes("mt"));
+        }
 
+
+        /// <summary>
+        /// Отправка каждому из клиентов оповещение о начале хода Доктора.
+        /// </summary>
+        public static void SendDT()
+        {
+            bool _docex = false;
+            foreach (SClient _client in clients)
+                if (_client.role.Equals(Role.Doctor))
+                    _docex = true;
+            if (_docex == true)
+                foreach (SClient _client in clients)
+                    _client.Client.Send(Encoding.Default.GetBytes("dt"));
+            else
+                foreach (SClient _client in clients)
+                    _client.Client.Send(Encoding.Default.GetBytes("dm"));
+        }
+
+        /// <summary>
+        /// Отправка каждому из клиентов оповещение о начале хода Коммисара.
+        /// </summary>
+        public static void SendCT()
+        {
+            bool _comex = false;
+            foreach (SClient _client in clients)
+                if (_client.role.Equals(Role.Commissar))
+                    _comex = true;
+            if (_comex == true)
+                foreach (SClient _client in clients)
+                    _client.Client.Send(Encoding.Default.GetBytes("ct"));
+                else
+                foreach (SClient _client in clients)
+                    _client.Client.Send(Encoding.Default.GetBytes("cm"));
+        }
     }
 }

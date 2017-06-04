@@ -98,34 +98,39 @@ namespace Server
                     {
                         Program.Print("Sending");
                         Server.Program.SendList();
-                        Thread.Sleep(6000);
+                        Thread.Sleep(1000);
                         Server.Program.Cast();
-                        Thread.Sleep(10000);
-                        client.Client.Send(Encoding.Default.GetBytes("mt"));
+                        Thread.Sleep(5000);
+                        Server.Program.SendMT();
                     }
                     break;
                 case "mm":
                     Server.Program.MarkM(message.Substring(2));
                     Thread.Sleep(2000);
-                    client.Client.Send(Encoding.Default.GetBytes("dt"));
+                    Server.Program.SendDT();
                     break;
 
                 case "hm":
                     Server.Program.Heal(message.Substring(2));
                     Thread.Sleep(2000);
-                    client.Client.Send(Encoding.Default.GetBytes("ct"));
+                    Server.Program.SendCT();
                     break;
                 case "cc":
                     Server.Program.CommisarChek(message.Substring(2));
                     Thread.Sleep(6000);
                     Server.Program.DayBeginning();
                     break;
+                case "cg":
+                    Server.Program.DayBeginning();
+                    break;
                 case "vv":
                     Server.Program.Vote(message.Substring(2));
                     if (Server.Program.AllVoted(Turns._voted).Equals(true))
+                    {
                         Server.Program.Voting();
-                    Thread.Sleep(6000);
-                    Server.Program.Check();
+                        Thread.Sleep(6000);
+                        Server.Program.Check();
+                    }
                     break;
             }
             Program.Print("Клиент {0} прислал сообщение: >{1}<", client.Client.RemoteEndPoint, message);
