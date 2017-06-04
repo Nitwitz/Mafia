@@ -18,8 +18,12 @@ namespace ClassLibrary
         /// <summary>
         /// Кол-во проголосовавших.
         /// </summary>
-        public static byte _voted = 0;        
+        public static byte _voted = 0;
 
+        /// <summary>
+        /// Наличие убитого.
+        /// </summary>
+        public static bool guessed;
         //    /// <summary>
         //    /// Счёт голосов.
         //    /// </summary>

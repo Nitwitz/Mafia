@@ -128,6 +128,7 @@ namespace Mafia
         private void _clientReaction()
         {
             byte[] c_answer = new byte[1024];
+            byte[] data = new byte[1024];
             //Буфер для ответа.
             //    byte[] answer = new byte[1024];
             //StringBuilder _str = new StringBuilder();
@@ -135,6 +136,7 @@ namespace Mafia
             //string message = null;
             while (true)
             {
+
                 if (_client._socket.Available == 0)
                 {
                     Thread.Sleep(10);
@@ -154,7 +156,7 @@ namespace Mafia
                         if (c_message.Substring(2).Equals("mafia"))
                         {
                             _client.role = Role.Mafia;
-                            MessageBox.Show("Вы - Мафийя!");
+                            MessageBox.Show("Вы - Мафия!");
                         }
                         if (c_message.Substring(2).Equals("commissar"))
                         {
@@ -164,7 +166,7 @@ namespace Mafia
                         if (c_message.Substring(2).Equals("doctor"))
                         {
                             _client.role = Role.Doctor;
-                            MessageBox.Show("Вы - ДОтор!");
+                            MessageBox.Show("Вы - Доктор!");
                         }
                         if (c_message.Substring(2).Equals("civilian"))
                         {
@@ -174,21 +176,46 @@ namespace Mafia
                         break;
                     case "mt":
                         status = Status.MafiaTurn;
-                        btnOk.Visible = false;
+                        InvisibleButton();
+                        MessageBox.Show("Наступает ночь! Ход Мафии!");
                         if (_client.role.Equals(Role.Mafia))
-                            btnOk.Visible = true;
+                            VisibleButton();
                         break;
                     case "dt":
                         status = Status.DoctorTurn;
-                        btnOk.Visible = false;
+                        InvisibleButton();
+                        MessageBox.Show("Ход Доктора!");
                         if (_client.role.Equals(Role.Doctor))
-                            btnOk.Visible = true;
+                            VisibleButton();
+                        break;
+                    case "dm":
+                        status = Status.DoctorTurn;
+                        InvisibleButton();
+                        MessageBox.Show("Ход Доктора!");
+                        Thread.Sleep(5000);
+                        if (_client.role.Equals(Role.Mafia))
+                        {
+                            data = Encoding.Default.GetBytes("hm");
+                            _client._socket.Send(data);
+                        }
                         break;
                     case "ct":
                         status = Status.CommissarTurn;
-                        btnOk.Visible = false;
+                        InvisibleButton();
+                        MessageBox.Show("Ход Коммисара!");
                         if (_client.role.Equals(Role.Commissar))
-                            btnOk.Visible = true;
+                            VisibleButton();
+                        break;
+                    case "cm":
+                        status = Status.CommissarTurn;
+                        InvisibleButton();
+                        MessageBox.Show("Ход Коммисара!");
+                        Thread.Sleep(5000);
+                        if(_client.role.Equals(Role.Mafia))
+                        { 
+                        data = Encoding.Default.GetBytes("cg");
+                        _client._socket.Send(data);
+                            }
                         break;
                     case "ym":
                         if (_client.role.Equals(Role.Commissar))
@@ -196,24 +223,25 @@ namespace Mafia
                         break;
                     case "nm":
                         if (_client.role.Equals(Role.Commissar))
-                            MessageBox.Show("Игрок " + c_message.Substring(2) + " НЕ Мафиея.");
+                            MessageBox.Show("Игрок " + c_message.Substring(2) + " НЕ Мафия.");
                         break;
                     case "db":
+                        status = Status.Day;
                         if (c_message.Substring(2).Equals("no"))
                         {
-                            status = Status.Day;
                             MessageBox.Show("Наступил день. Пострадавших НЕТ. Доктор отлично справляется со своей работой.  Приступай к голосованию.");
-                            btnOk.Visible = true;
+                            VisibleButton();
                         }
                         else
                         {
-                            status = Status.Day;
                             MessageBox.Show("Наступил день. Игрок " + c_message.Substring(2) + " мёртв! Приступай к голосованию.");
-                            btnOk.Visible = true;
+                            VisibleButton();
                         }
                         break;
                     case "ve":
                         MessageBox.Show("По результатам голосования выбывает игрок: " + c_message.Substring(2));
+                        if (_client.userName.Equals(c_message.Substring(2)))
+                            Close();
                         break;
                     case "mw":
                         MessageBox.Show("Победу одержал Мафия! Конец игры!");
@@ -230,8 +258,24 @@ namespace Mafia
 
         }
 
+        //private delegate void DeleteFromPLayersLisDelegate(string _name);
+
+        //private void DeleteFromPLayersList(string _name)
+        //{
+        //    if(ListOfPlayers.InvokeRequired)
+        //    {
+        //        ListOfPlayers.Invoke((DeleteFromPLayersLisDelegate)DeleteFromPLayersLis, _name);
+        //        return;
+        //    }
+           
+        //}
+
         private delegate void AddToPlayersListDelegate(string _name);
 
+        /// <summary>
+        /// Добавление имени игрока в список игроков.
+        /// </summary>
+        /// <param name="_name">ИМя игрока.</param>
         private void AddToPlayersList(string _name)
         {
             if (ListOfPlayers.InvokeRequired)
@@ -240,6 +284,38 @@ namespace Mafia
                 return;
             }
             ListOfPlayers.Items.Add(_name);
+        }
+
+
+
+        private delegate void VisibleButtonDelegate();
+
+        /// <summary>
+        /// Сделать кнопку "Подтвердить" видимой для игрока.
+        /// </summary>
+        private void VisibleButton()
+        {
+            if (btnOk.InvokeRequired)
+            {
+                btnOk.Invoke((VisibleButtonDelegate)VisibleButton);
+                return;
+            }
+            btnOk.Visible = true;
+        }
+
+        private delegate void InvisibleButtonDelegate();
+
+        /// <summary>
+        /// Сделать кнопку "Подтвердить" невидимой для игрока.
+        /// </summary>
+        private void InvisibleButton()
+        {
+            if(btnOk.InvokeRequired)
+            {
+                btnOk.Invoke((InvisibleButtonDelegate)InvisibleButton);
+                return;
+            }
+            btnOk.Visible = false;
         }
         /// <summary>
         /// Отображает кнопку выбора, список игроков, и текущую роль
