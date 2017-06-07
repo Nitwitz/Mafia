@@ -88,6 +88,8 @@ namespace Mafia
             Play play = new Play();
             if (play.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
+                btnStart.Visible = true;
+                buttonstart.Visible = false;
                 _client.userName = play.UserName;
                 LbName.Text = _client.userName;
                 _client._socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -98,6 +100,7 @@ namespace Mafia
                 _client._socket.Send(data);
             }
         }
+
         /// <summary>
         /// Кнопка информации об игре
         /// </summary>
@@ -149,6 +152,9 @@ namespace Mafia
                     continue;
                 switch (c_message.Substring(0, 2))
                 {
+                    case "++":
+                        LbName.Text += "*";
+                        break;
                     case "==":
                         AddToPlayersList(c_message.Substring(2));
                         break;
@@ -235,11 +241,15 @@ namespace Mafia
                         else
                         {
                             MessageBox.Show("Наступил день. Игрок " + c_message.Substring(2) + " мёртв! Приступай к голосованию.");
+                            DeleteFromPLayersList(c_message.Substring(2));
+                            if (_client.userName.Equals(c_message.Substring(2)))
+                                Close();
                             VisibleButton();
                         }
                         break;
                     case "ve":
                         MessageBox.Show("По результатам голосования выбывает игрок: " + c_message.Substring(2));
+                        DeleteFromPLayersList(c_message.Substring(2));
                         if (_client.userName.Equals(c_message.Substring(2)))
                             Close();
                         break;
@@ -258,17 +268,22 @@ namespace Mafia
 
         }
 
-        //private delegate void DeleteFromPLayersLisDelegate(string _name);
 
-        //private void DeleteFromPLayersList(string _name)
-        //{
-        //    if(ListOfPlayers.InvokeRequired)
-        //    {
-        //        ListOfPlayers.Invoke((DeleteFromPLayersLisDelegate)DeleteFromPLayersLis, _name);
-        //        return;
-        //    }
-           
-        //}
+        private delegate void DeleteFromPLayersLisDelegate(string _name);
+        /// <summary>
+        /// Удаление из списка имён выбывшего игрока.
+        /// </summary>
+        /// <param name="_name"></param>
+        private void DeleteFromPLayersList(string _name)
+        {
+            
+            if (ListOfPlayers.InvokeRequired)
+            {
+                ListOfPlayers.Invoke((DeleteFromPLayersLisDelegate)DeleteFromPLayersList, _name);
+                return;
+            }
+            ListOfPlayers.Items.Remove(_name);
+        }
 
         private delegate void AddToPlayersListDelegate(string _name);
 
@@ -342,7 +357,7 @@ namespace Mafia
                     MessageBox.Show( "К", "Роль", MessageBoxButtons.OK);
                     break;
                 case Role.Doctor:
-                    MessageBox.Show( "В", "Роль", MessageBoxButtons.OK);
+                    MessageBox.Show( "Д", "Роль", MessageBoxButtons.OK);
                     break;
                 case Role.Mafia:
                     MessageBox.Show("М", "Роль", MessageBoxButtons.OK);
@@ -350,7 +365,7 @@ namespace Mafia
 
             }
         }
-
+        
         /// <summary>
         /// Обработка нажатия кнопки "Выбрать" в зависимости от текущего статуса.
         /// </summary>
@@ -376,8 +391,10 @@ namespace Mafia
                 case Status.Day:
                     data = Encoding.Default.GetBytes("vv" + ListOfPlayers.SelectedItem);
                     _client._socket.Send(data);
+                    InvisibleButton();
                     break;
             }
         }
+        
     }
 }

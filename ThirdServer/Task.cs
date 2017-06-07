@@ -87,8 +87,16 @@ namespace Server
             switch (message.Substring(0, 2))
             {
                 case "##":
-                    client.userName = message.Substring(2);
+                    Server.Program.SameName(message.Substring(2));
+                    if (Turns.sameName == true)
+                    {
+                        client.userName = message.Substring(2) + "*";
+                        client.Client.Send(Encoding.Default.GetBytes("++"));
+                    }
+                    else
+                        client.userName = message.Substring(2);
                     Program.Print(client.userName);
+                    Turns.sameName = false;
                     break;
 
                 case "**":

@@ -21,9 +21,16 @@ namespace ClassLibrary
         public static byte _voted = 0;
 
         /// <summary>
-        /// Наличие убитого.
+        /// Угадал ли комиссар.
         /// </summary>
         public static bool guessed;
+
+        /// <summary>
+        ///  Наличие убитого.
+        /// </summary>
+        public static bool corpse;
+
+        public static bool sameName;
         //    /// <summary>
         //    /// Счёт голосов.
         //    /// </summary>

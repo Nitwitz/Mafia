@@ -47,6 +47,7 @@ namespace Server
         private static Thread receiveThread;
         //private static ILog _log = new FileLog("X:\\123.txt");
 
+        public static Random _rnd = new Random();
 
         static object locker = new object();
 
@@ -199,14 +200,13 @@ namespace Server
         public static void Cast()
         {
             byte _cCount = (byte)clients.Count;
-            Random _rnd = new Random();
-            byte _mafiaIndex = (byte)_rnd.Next(1, _cCount);
-            byte _commissarIndex = (byte)_rnd.Next(1, _cCount);
-            if(_commissarIndex == _mafiaIndex)
-                _commissarIndex = (byte)_rnd.Next(1, _cCount);
-            byte _medicIndex = (byte)_rnd.Next(1, _cCount);
-             if(_medicIndex == _mafiaIndex || _medicIndex== _commissarIndex)
-                _medicIndex = (byte)_rnd.Next(1, _cCount);
+            byte _mafiaIndex = (byte)_rnd.Next(1, _cCount+1);
+            byte _commissarIndex = (byte)_rnd.Next(1, _cCount+1);
+            while(_commissarIndex == _mafiaIndex)
+                _commissarIndex = (byte)_rnd.Next(1, _cCount+1);
+            byte _medicIndex = (byte)_rnd.Next(1, _cCount+1);
+             while(_medicIndex == _mafiaIndex || _medicIndex== _commissarIndex)
+                _medicIndex = (byte)_rnd.Next(1, _cCount+1);
             byte _clientCount = 1;
             foreach (SClient client in clients)
             {
@@ -245,8 +245,8 @@ namespace Server
         //    Random rand = new Random();
         //    for (int i = players.Length - 1; i >= 0; i--)
         //    {
-        //      byte j = rand.Next(i);
-        //       byte temp = players[i];
+        //        byte j = rand.Next(i);
+        //        byte temp = players[i];
         //        players[i] = players[j];
         //        players[j] = temp;
         //    }
@@ -298,7 +298,10 @@ namespace Server
                 if (_civCount <= 2)
                 {
                     foreach (SClient client in clients)
+                    {
+                        Turns._ready = 0;
                         client.Client.Send(Encoding.Default.GetBytes("mw"));
+                    }
                 }
                 else
                 {
@@ -309,7 +312,10 @@ namespace Server
             else
             {
                 foreach (SClient client in clients)
+                {
+                    Turns._ready = 0;
                     client.Client.Send(Encoding.Default.GetBytes("cw"));
+                }
             }
         }
 
@@ -353,27 +359,34 @@ namespace Server
         }
 
         /// <summary>
-        /// Наступление дня. Проверка на налдичие мёртвых.
+        /// Наступление дня. Проверка на наличие мёртвых.
         /// </summary>
         public static void DayBeginning()
         {
             foreach (SClient client in clients)
-            {
                 if (client.mark == true)
+                    Turns.corpse = true;
+            if (Turns.corpse == true)
+            {
+                foreach (SClient _client in clients)
                 {
-                    foreach (SClient _client in clients)
-                        _client.Client.Send(Encoding.Default.GetBytes("db" + client.userName));
-                    client.Client.Disconnect(false);
-                    break;
-                }
-                else
-                {
-                    foreach (SClient _client in clients)
-                        _client.Client.Send(Encoding.Default.GetBytes("dbno"));
-                    break;
+                    if (_client.mark == true)
+                    {
+                        foreach (SClient client in clients)
+                            client.Client.Send(Encoding.Default.GetBytes("db" + _client.userName));
+                        Thread.Sleep(2000);
+                        _client.Client.Disconnect(false);
+                    }
                 }
             }
+            else
+            {
+                foreach (SClient _client in clients)
+                    _client.Client.Send(Encoding.Default.GetBytes("dbno"));
+            }
+            Turns.corpse = false;
         }
+            
 
         /// <summary>
         /// Начисление голосов.
@@ -479,6 +492,17 @@ namespace Server
                 else
                 foreach (SClient _client in clients)
                     _client.Client.Send(Encoding.Default.GetBytes("cm"));
+        }
+
+        /// <summary>
+        /// Реакция на случай, когда введённое имя совпадает с уже существующим.
+        /// </summary>
+        /// <param name="_name">Введённое игроком имя.</param>
+        public static void SameName(string _name)
+        {
+            foreach (SClient client in clients)
+                if (_name.Equals(client.userName))
+                    Turns.sameName = true;
         }
     }
 }

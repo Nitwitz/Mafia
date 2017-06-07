@@ -108,6 +108,7 @@
             this.btnStart.Size = new System.Drawing.Size(87, 23);
             this.btnStart.TabIndex = 5;
             this.btnStart.UseVisualStyleBackColor = false;
+            this.btnStart.Visible = false;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // pnlGame
@@ -118,10 +119,12 @@
             this.pnlGame.Controls.Add(this.btnInfo);
             this.pnlGame.Controls.Add(this.ListOfPlayers);
             this.pnlGame.Controls.Add(this.btnOk);
+            this.pnlGame.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pnlGame.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlGame.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.pnlGame.Location = new System.Drawing.Point(-4, -5);
+            this.pnlGame.Location = new System.Drawing.Point(0, 0);
             this.pnlGame.Name = "pnlGame";
-            this.pnlGame.Size = new System.Drawing.Size(270, 448);
+            this.pnlGame.Size = new System.Drawing.Size(262, 439);
             this.pnlGame.TabIndex = 7;
             // 
             // LbName
@@ -141,6 +144,7 @@
             this.btnInfo.BackColor = System.Drawing.Color.White;
             this.btnInfo.BackgroundImage = global::Mafia.Properties.Resources.question1;
             this.btnInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnInfo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnInfo.Location = new System.Drawing.Point(225, 16);
             this.btnInfo.Name = "btnInfo";
@@ -151,6 +155,7 @@
             // 
             // ListOfPlayers
             // 
+            this.ListOfPlayers.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ListOfPlayers.FormattingEnabled = true;
             this.ListOfPlayers.Location = new System.Drawing.Point(41, 80);
             this.ListOfPlayers.Name = "ListOfPlayers";
@@ -160,6 +165,7 @@
             // btnOk
             // 
             this.btnOk.BackColor = System.Drawing.Color.White;
+            this.btnOk.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOk.ForeColor = System.Drawing.Color.Black;
             this.btnOk.Location = new System.Drawing.Point(186, 393);
