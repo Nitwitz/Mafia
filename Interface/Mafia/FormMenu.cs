@@ -253,6 +253,9 @@ namespace Mafia
                         if (_client.userName.Equals(c_message.Substring(2)))
                             Close();
                         break;
+                    case "vc":
+                        MessageBox.Show("Голосование не принесло результатов, игра продолжается.");
+                        break;
                     case "mw":
                         MessageBox.Show("Победу одержал Мафия! Конец игры!");
                         Thread.Sleep(6000);

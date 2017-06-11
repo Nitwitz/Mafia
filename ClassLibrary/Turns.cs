@@ -30,7 +30,12 @@ namespace ClassLibrary
         /// </summary>
         public static bool corpse;
 
+        /// <summary>
+        /// Совпадает ли имя введённое игроком с уже существующем именем.
+        /// </summary>
         public static bool sameName;
+
+        public static bool sameVotes;
         //    /// <summary>
         //    /// Счёт голосов.
         //    /// </summary>

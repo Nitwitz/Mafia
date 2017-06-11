@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThirdServer", "ThirdServer\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface", "Interface\Mafia\Interface.csproj", "{8C2F710B-DD6B-4E55-97CA-3B9EC6547D62}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerService", "ServerService\ServerService.csproj", "{9DF8AE78-A4FB-4275-AAFD-A2201D8EB517}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{8C2F710B-DD6B-4E55-97CA-3B9EC6547D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C2F710B-DD6B-4E55-97CA-3B9EC6547D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C2F710B-DD6B-4E55-97CA-3B9EC6547D62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DF8AE78-A4FB-4275-AAFD-A2201D8EB517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DF8AE78-A4FB-4275-AAFD-A2201D8EB517}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DF8AE78-A4FB-4275-AAFD-A2201D8EB517}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DF8AE78-A4FB-4275-AAFD-A2201D8EB517}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

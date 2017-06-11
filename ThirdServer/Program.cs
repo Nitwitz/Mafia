@@ -1,4 +1,5 @@
-﻿using System;
+﻿#define CS
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,16 +17,19 @@ using ClassLibrary;
 
 namespace Server
 {
-    class Program
+    public class Program
     {
         /// <summary>
         /// Вывод в консоль.
         /// </summary>
         /// <param name="f">Формат.</param>
         /// <param name="p">Параметры.</param>
+
         public static void Print(string f, params object[] p)
         {
+#if CS
             Console.WriteLine(f, p);
+#endif
         }
 
 
@@ -51,9 +55,15 @@ namespace Server
 
         static object locker = new object();
 
+
         static void Main(string[] args)
         {
-            //string[] _args = (string[])args;
+            MainTH((object)args);
+        }
+
+        public static void MainTH(object args)
+        {
+            string[] _args = (string[])args;
             IPAddress _ip = IPAddress.Parse("127.0.0.1");
             IPEndPoint _ipep = new IPEndPoint(_ip, 1100);
             //_log.WriteEntry("MyServer", "Сервер запускается.", LogEventType.Info);
@@ -435,19 +445,29 @@ namespace Server
         /// </summary>
         public static void Voting()
         {
+            byte count = 0;
             foreach (SClient client in clients)
-            {
                 if (client.voteCount == MaxVotes())
-                {
-                    foreach (SClient _client in clients)
-                        _client.Client.Send(Encoding.Default.GetBytes("ve" + client.userName));
-                    client.Client.Disconnect(false);
-                    Turns._voted = 0;
-                    foreach (SClient _client in clients)
-                        _client.voteCount = 0;
-                    break;
-                }
-            }
+                    count++;
+
+                if (count > 1)
+                    Turns.sameVotes = true;
+
+            if (Turns.sameVotes == true)
+                foreach (SClient client in clients)
+                    client.Client.Send(Encoding.Default.GetBytes("vc"));
+            else
+                foreach (SClient client in clients)
+                    if (client.voteCount == MaxVotes())
+                        foreach (SClient _client in clients)
+                        {
+                            _client.Client.Send(Encoding.Default.GetBytes("ve" + client.userName));
+                            client.Client.Disconnect(false);
+                            Turns._voted = 0;
+                        }
+            Turns.sameVotes = false;
+            foreach (SClient _client in clients)
+                _client.voteCount = 0;
         }
 
         /// <summary>

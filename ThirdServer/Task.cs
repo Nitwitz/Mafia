@@ -110,6 +110,7 @@ namespace Server
                         Server.Program.Cast();
                         Thread.Sleep(5000);
                         Server.Program.SendMT();
+                        Turns._ready = 0;
                     }
                     break;
                 case "mm":
