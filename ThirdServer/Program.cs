@@ -10,6 +10,7 @@ using System.Collections;
 using System.Threading;
 /*using Log;*/
 using ClassLibrary;
+using System.IO;
 
 
 
@@ -64,8 +65,12 @@ namespace Server
         public static void MainTH(object args)
         {
             string[] _args = (string[])args;
-            IPAddress _ip = IPAddress.Parse("127.0.0.1");
-            IPEndPoint _ipep = new IPEndPoint(_ip, 1100);
+            string adressAndPort = File.ReadAllText("X:\\MafiaServerData.txt");
+            int serverPort = Convert.ToInt32(adressAndPort.Substring(adressAndPort.IndexOf('*') + 1));
+            string serverAdress = adressAndPort.Substring(adressAndPort.IndexOf('#') + 1, adressAndPort.IndexOf('=') - 1);
+
+            IPAddress _ip = IPAddress.Parse(serverAdress);
+            IPEndPoint _ipep = new IPEndPoint(_ip, serverPort);
             //_log.WriteEntry("MyServer", "Сервер запускается.", LogEventType.Info);
             tcpServer = new TcpListener(_ipep);
             tcpServer.Start();
