@@ -34,9 +34,9 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.Confirm = new System.Windows.Forms.Button();
             this.EnterAdress = new System.Windows.Forms.Label();
-            this.txtAdress = new System.Windows.Forms.TextBox();
             this.EnterPort = new System.Windows.Forms.Label();
             this.txtPort = new System.Windows.Forms.TextBox();
+            this.tb_adress = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Cansel
@@ -68,7 +68,7 @@
             // 
             this.txtName.Location = new System.Drawing.Point(60, 36);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(143, 22);
+            this.txtName.Size = new System.Drawing.Size(143, 20);
             this.txtName.TabIndex = 1;
             this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -95,15 +95,6 @@
             this.EnterAdress.Text = "Введите Адресс:";
             this.EnterAdress.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // txtAdress
-            // 
-            this.txtAdress.Location = new System.Drawing.Point(60, 86);
-            this.txtAdress.Name = "txtAdress";
-            this.txtAdress.Size = new System.Drawing.Size(143, 22);
-            this.txtAdress.TabIndex = 3;
-            this.txtAdress.Text = "127.0.0.1";
-            this.txtAdress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // EnterPort
             // 
             this.EnterPort.BackColor = System.Drawing.Color.White;
@@ -120,10 +111,18 @@
             // 
             this.txtPort.Location = new System.Drawing.Point(60, 136);
             this.txtPort.Name = "txtPort";
-            this.txtPort.Size = new System.Drawing.Size(143, 22);
+            this.txtPort.Size = new System.Drawing.Size(143, 20);
             this.txtPort.TabIndex = 5;
             this.txtPort.Text = "1100";
             this.txtPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tb_adress
+            // 
+            this.tb_adress.Location = new System.Drawing.Point(60, 86);
+            this.tb_adress.Name = "tb_adress";
+            this.tb_adress.Size = new System.Drawing.Size(143, 20);
+            this.tb_adress.TabIndex = 8;
+            this.tb_adress.Text = "127.0.0.1";
             // 
             // Play
             // 
@@ -132,9 +131,9 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::Mafia.Properties.Resources.GyMNem8KHsI;
             this.ClientSize = new System.Drawing.Size(278, 477);
+            this.Controls.Add(this.tb_adress);
             this.Controls.Add(this.txtPort);
             this.Controls.Add(this.EnterPort);
-            this.Controls.Add(this.txtAdress);
             this.Controls.Add(this.EnterAdress);
             this.Controls.Add(this.Confirm);
             this.Controls.Add(this.txtName);
@@ -159,8 +158,8 @@
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Button Confirm;
         private System.Windows.Forms.Label EnterAdress;
-        private System.Windows.Forms.TextBox txtAdress;
         private System.Windows.Forms.Label EnterPort;
         private System.Windows.Forms.TextBox txtPort;
+        private System.Windows.Forms.TextBox tb_adress;
     }
 }

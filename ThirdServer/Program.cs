@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Collections;
 using System.Threading;
+using System.Windows.Forms;
 /*using Log;*/
 using ClassLibrary;
 using System.IO;
@@ -33,7 +34,7 @@ namespace Server
 #endif
         }
 
-
+        static string port;
         /// <summary>
         /// Сервер.
         /// </summary>
@@ -56,20 +57,29 @@ namespace Server
 
         static object locker = new object();
 
-
         static void Main(string[] args)
         {
-            MainTH((object)args);
+            if (args.Length == 0)
+            {
+                port = "1100";
+            }
+            else
+            {
+                port = args[0];
+            }
+               MainTH((object)args);
         }
 
         public static void MainTH(object args)
-        {
-            string[] _args = (string[])args;
-            string adressAndPort = File.ReadAllText("X:\\MafiaServerData.txt");
-            int serverPort = Convert.ToInt32(adressAndPort.Substring(adressAndPort.IndexOf('*') + 1));
-            string serverAdress = adressAndPort.Substring(adressAndPort.IndexOf('#') + 1, adressAndPort.IndexOf('=') - 1);
+        { 
 
-            IPAddress _ip = IPAddress.Parse(serverAdress);
+            string[] _args = (string[])args;
+            int serverPort = Convert.ToInt32(port);
+            string serverAdress = Dns.GetHostName(); 
+               
+
+            IPAddress _ip = Dns.GetHostByName(serverAdress).AddressList[0];
+            
             IPEndPoint _ipep = new IPEndPoint(_ip, serverPort);
             //_log.WriteEntry("MyServer", "Сервер запускается.", LogEventType.Info);
             tcpServer = new TcpListener(_ipep);

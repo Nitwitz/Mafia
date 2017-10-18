@@ -20,6 +20,7 @@ namespace Mafia
         public Play()
         {
             InitializeComponent();
+           
         }
         /// <summary>
         /// Возвращение в Меню
@@ -39,7 +40,7 @@ namespace Mafia
         }
         public string Address
         {
-            get { return txtAdress.Text; }
+            get { return tb_adress.Text; }
         }
         public string Port
         {
